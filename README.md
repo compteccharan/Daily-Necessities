@@ -1,7 +1,7 @@
 # Daily-Necessities
 A dashboard that allows purcahse of daily basic necessities
 
-#Features
+# Features
 - Contact Us
 - Brands
 - Product Sorting(or) Filtering
