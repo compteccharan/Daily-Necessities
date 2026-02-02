@@ -17,7 +17,7 @@ A dashboard that allows purcahse of daily basic necessities
 - Dairy Products
 - Cosmetics
 - Sanitary
-- Cold Drinks
+- Beverages
 
 # About Project
  Software Process Model - Increment Process Model
