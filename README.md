@@ -18,6 +18,7 @@ A dashboard that allows purcahse of daily basic necessities
 - Cosmetics
 - Sanitary
 - Beverages
+- MedPharm
 
 # About Project
  Software Process Model - Increment Process Model
