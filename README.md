@@ -19,7 +19,7 @@ A dashboard that allows the purchase of daily necessities
 - Cosmetics
 - Sanitary
 - Beverages
-- Medpharm
+- MedPharm
 
 # About Project
  _Daily-Necessities is a web-based e-commerce dashboard designed to simplify the procurement of household essentials. From fresh produce to wellness products, the platform provides a streamlined user interface  for browsing, sorting, and purchasing daily needs._
