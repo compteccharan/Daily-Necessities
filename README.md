@@ -1,6 +1,9 @@
 # Daily-Necessities
 A dashboard that allows the purchase of daily necessities
 
+# project title
+
+
 # Features
 - A landing page
 - Cart
@@ -37,3 +40,4 @@ A dashboard that allows the purchase of daily necessities
 - Frontend Developer : Sathya Sai S
 - Backend Developer : Charan Nihaal R
 - GIT Manager : Dhanush P
+
