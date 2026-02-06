@@ -1,7 +1,7 @@
 # Daily-Necessities
 A dashboard that allows the purchase of daily necessities
 
-# project title
+# Project title
 
 
 # Features
