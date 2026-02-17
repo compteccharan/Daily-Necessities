@@ -6,7 +6,7 @@ A dashboard that allows the purchase of daily necessities
 
 # Features
 - A landing page
-- Cart
+- Carting
 - Shipping(!In Review!)
 - Orders
 - Reviews
