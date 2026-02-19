@@ -7,7 +7,7 @@
     <title>Verdail - Sign In</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
         * {
@@ -16,6 +16,28 @@
         
         body {
             font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .page-layout {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+            padding: 40px 80px;
+            gap: 40px;
+        }
+
+        .brand-panel {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .brand-image {
+            width: 420px;
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
 
         .sign-in-wrapper {
@@ -46,13 +68,20 @@
         .sign-in-form input {
             padding: 15px;
             font-size: 14px;
+            font-weight: 500;
             font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            border: 1px solid #ccc;
+            border: 1px solid rgb(187, 186, 186);
             border-radius: 52px;
+            color: rgb(74, 74, 74);
+        }
+
+        .sign-in-form input::placeholder {
+            color: rgb(122, 121, 121);
         }
 
         .forgot-password {
-            font-size: 12px;
+            font-size: 13px;
+            font-weight: 500;
             font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #4CAF50;
             text-decoration: none;
@@ -69,6 +98,7 @@
             border: none;
             border-radius: 52px;
             cursor: pointer;
+            letter-spacing: 0.2px;
         }
 
         .sign-in-portion {
@@ -89,7 +119,7 @@
             margin-bottom: 10px;
         }
 
-        .google_button {
+        .google_button{
             padding: 15px;
             display: flex;
             justify-content: center;
@@ -106,6 +136,17 @@
             width: 100%;
         }
 
+        .google_button-text {
+            font-size: 14px;
+            font-weight: 600;
+            margin: 0;
+        }
+         .signin-button:hover {
+            background-color: rgb(40, 145, 5);
+            border-color: rgb(40, 145, 5);
+            color: white;
+            border-width: 2px;
+        }
         .google_button:hover {
             background-color: rgb(40, 145, 5);
             border-color: rgb(40, 145, 5);
@@ -137,24 +178,29 @@
 </head>
 
 <body>
-    <div class="sign-in-wrapper">
-        <h1 class="sign-in-heading">Sign In</h1>
-        <div class="sign-in-form-container">
-            <form class="sign-in-form">
-                <input type="email" placeholder="Email">
-                <input type="password" placeholder="Password">
-                <a href="#" class="forgot-password">Forgot Password?</a>
-                <button type="submit">Sign In</button>
-            </form>
+    <div class="page-layout">
+        <div class="brand-panel">
+            <img class="brand-image" src="assets/VERDAIL_ENTRY.png" alt="Verdail Online Shop">
+        </div>
+        <div class="sign-in-wrapper">
+            <h1 class="sign-in-heading">Sign In</h1>
+            <div class="sign-in-form-container">
+                <form class="sign-in-form">
+                    <input type="email" placeholder="Email">
+                    <input type="password" placeholder="Password">
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                    <button class="signin-button" type="submit">Sign In</button>
+                </form>
 
-            <div class="sign-in-portion">
-                <h5 class="connect_media">or Connect with other social media</h5>
-                <button type="button" class="google_button">
-                    <p style="font-size:14px;font-weight:600;display:inline;font-family:Roboto,Arial;margin:0;">Sign in with Google</p>
-                    <svg class="google_img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path fill="rgb(230, 74, 74)" d="M564 325.8C564 467.3 467.1 568 324 568C186.8 568 76 457.2 76 320C76 182.8 186.8 72 324 72C390.8 72 447 96.5 490.3 136.9L422.8 201.8C334.5 116.6 170.3 180.6 170.3 320C170.3 406.5 239.4 476.6 324 476.6C422.2 476.6 459 406.2 464.8 369.7L324 369.7L324 284.4L560.1 284.4C562.4 297.1 564 309.3 564 325.8z"/></svg>
-                </button>
-                <p class="new-customer">New Customer?<u class="sign-up">Sign Up</u></p>
-                <pre class="terms-conditions" style="line-height:18px;">By continuing, you agree to Verdail's <br> <u class="conditions">Conditions of Use</u> and <u class="policy">Privacy Policy</u></pre>
+                <div class="sign-in-portion">
+                    <h5 class="connect_media">or Connect with other social media</h5>
+                    <button type="button" class="google_button">
+                        <p class="google_button-text">Sign in with Google</p>
+                        <svg class="google_img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path fill="rgb(230, 74, 74)" d="M564 325.8C564 467.3 467.1 568 324 568C186.8 568 76 457.2 76 320C76 182.8 186.8 72 324 72C390.8 72 447 96.5 490.3 136.9L422.8 201.8C334.5 116.6 170.3 180.6 170.3 320C170.3 406.5 239.4 476.6 324 476.6C422.2 476.6 459 406.2 464.8 369.7L324 369.7L324 284.4L560.1 284.4C562.4 297.1 564 309.3 564 325.8z"/></svg>
+                    </button>
+                    <p class="new-customer">New Customer? <u class="sign-up">Sign Up</u></p>
+                    <pre class="terms-conditions" style="line-height:18px;">By continuing, you agree to Verdail's <br> <u class="conditions">Conditions of Use</u> and <u class="policy">Privacy Policy</u></pre>
+                </div>
             </div>
         </div>
     </div>
