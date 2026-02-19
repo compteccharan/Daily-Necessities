@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign in 2</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <style>
+            
+            .sign-in-portion{
+                 margin: 30px 20px;
+                 
+            }
+
+           .connect_media{
+            font-family:Roboto,Arial;
+            font-weight:500;
+            font-size:12px;
+            color:rgb(146, 144, 144);
+            margin-left:40px;
+            margin-bottom: 15px;
+           }
+
+           .google_button{
+            padding:6px 25px 8px 25px ;
+            align-items: center;
+            background-color: white;
+            border-color: rgb(187, 186, 186);
+            border-style: solid;
+            border-width: 2px;
+            border-radius: 30px;
+            transition: color 0.15s,background-color 0.15s,border-color 0.15s;
+            cursor:pointer;
+            width:280px;
+            margin-bottom:5px;
+           }
+
+           .google_button:hover{
+               background-color:rgb(40, 145, 5) ;
+               border-color:rgb(40, 145, 5) ;
+               color:white;
+               border-width: 2px;
+           }
+
+           .google_img{
+            width:20px;
+            margin-bottom:-5px;
+           }
+
+           .terms-conditions,.new-customer{
+             font-family:Roboto;
+             font-size: 12px;
+             color:rgb(122, 121, 121);
+             margin-left:12px;
+           }
+
+           .conditions,.policy,.sign-up{
+            color:rgb(22, 64, 132);
+            cursor:pointer;
+           }
+           .conditions:hover,.policy:hover,.sign-up:hover{
+            color:rgb(16, 139, 16);
+           }
+        </style>
+        <div class = "sign-in-portion">
+        <h5 class = "connect_media">or Connect with other social media</h5>
+        <button class = "google_button">
+          <p style="font-size:14px;font-weight:600;display:inline;font-family:Roboto,Arial;">Sign in with Google</p>
+          <svg class = "google_img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path fill="rgb(230, 74, 74)" d="M564 325.8C564 467.3 467.1 568 324 568C186.8 568 76 457.2 76 320C76 182.8 186.8 72 324 72C390.8 72 447 96.5 490.3 136.9L422.8 201.8C334.5 116.6 170.3 180.6 170.3 320C170.3 406.5 239.4 476.6 324 476.6C422.2 476.6 459 406.2 464.8 369.7L324 369.7L324 284.4L560.1 284.4C562.4 297.1 564 309.3 564 325.8z"/></svg>
+        </button>
+         <p class="new-customer">New Customer?<u class="sign-up">Sign Up</u></p>
+        <pre class = "terms-conditions" style="line-height:18px;">By continuing,you agree to Verdail's  <u class="conditions">Conditions <br>of Use</u> and <u class="policy">Privacy Policy</u> </pre> 
+         </div>
+    </body>
+</html>
