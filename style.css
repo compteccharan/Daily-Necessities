@@ -1,0 +1,15 @@
+.categories{
+    border:0px;
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    overflow-x: scroll;
+    gap: 20px;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+}
+
+li:hover{
+    cursor:pointer;
+    color:red;
+}
