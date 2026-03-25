@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Necessities - Your One-Stop Shop</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        body{
+         margin:none;
+        }   
+               
+        button{
+        padding-left:30px;
+        padding-right:30px;
+        }
+        
+        .Home-page-header{
+            margin-top: 15px;
+                  padding-bottom:20px;
+            border-bottom: 1px solid lightgray;
+            
+           
+        }
+          
+       .header-top-portion{
+            border:none;
+            height:50px;
+            display:flex;
+            justify-content:space-between;
+      
+           
+        }
+
+       .logo{
+          width:280px;
+          text-align:center;
+          padding-top:13px; 
+          display:flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+       .logo-img{ 
+         width: 180px;
+         margin-bottom: -24px;
+         height: 150px;
+         object-fit:contain;
+       }
+
+       .search-bar{
+          border:1px solid rgb(153, 152, 152);
+          border-radius: 45px;
+          padding:10px 8px;
+          width:660px;
+          height:40px;
+          margin-top: 4px;
+          display:flex;
+          justify-content: center;
+          align-items: center;
+          box-sizing: border-box;
+          background-color: white;
+       }
+
+       .search-box{
+        border:none;
+        outline:none;
+        flex:1;
+        font-size:17px;
+        max-width:600px;
+        padding-left:8px;
+        background: transparent;
+       }
+
+       .search-icon{
+        width:22px;
+        height:22px;
+        border:none;
+        padding:0;
+        padding-left:10px;
+       }
+
+       .login-cart{
+          width:300px;
+          text-align:center;
+          padding-top:13px; 
+       }
+
+       .navigation-bar{
+        display:flex;
+        background-color: rgb(98, 255, 0);
+        height:44px;
+        margin-top: 5px;
+   
+       }
+       
+
+
+    </style>
+
+    <header>
+            <nav class = "Home-page-header">
+                <div class = "header-top-portion">
+                    <div class="logo"><img class="logo-img" src="/assets/logo-img.svg"></div>
+                    <div class = "search-bar">
+                     <svg class ="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path fill="rgb(131, 126, 126)"
+                        d="M480 272C480 317.9 465.1 360.3 440 394.7L566.6 521.4C579.1 533.9 579.1 554.2 566.6 566.7C554.1 579.2 533.8 579.2 
+                        521.3 566.7L394.7 440C360.3 465.1 317.9 480 272 480C157.1 480 64 386.9 64 272C64 157.1 157.1 64 272 64C386.9 64 480 
+                        157.1 480 272zM272 416C351.5 416 416 351.5 416 272C416 192.5 351.5 128 272 128C192.5 128 128 192.5 128 272C128 351.5
+                        192.5 416 272 416z"/>
+                    </svg>
+                     <input class="search-box" type="text" placeholder="Search your Essentials"> </div> 
+                    <div class="login-cart" style="background-color: rgb(0, 4, 255);color:white;">Login-Cart Portion</div>
+                </div> 
+            </nav>
+          
+            <nav class="navigation-bar">
+                <button><a href="#home">All</a></button>
+                <button><a href="#home">Veggies</a></button>
+                <button><a href="#home">Dairy Products</a></button>
+                <button><a href="#home">Cosmetics</a></button>
+                <button><a href="#home">Sanitary</a></button>
+                <button><a href="#home">Beverages</a></button>
+                <button><a href="#home">MedPharm</a></button> 
+            </nav>   
+                  
+    </header>
