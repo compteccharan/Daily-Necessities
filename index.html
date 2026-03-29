@@ -5,218 +5,1133 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verdail - Fast Delivery Ecommerce</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Lottie Player for animations -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 <body>
-    <header>
-        <nav class="catnav">
-            <ul class="categories">
-                <li>All</li>
-                <li>Veggies</li>
-                <li>Groceries</li>
-                <li>Dairy Products</li>
-                <li>Cosmetics</li>
-                <li>Sanitary</li>
-                <li>Beverages</li>
-                <li>MedPharm</li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section class="product-section">
-        <h2 class="section-title">Household Cleaning</h2>
-        
-        <!-- The grid container -->
-        <div class="product-grid">
-            
-            <!-- CARD 1 -->
-            <article class="product-card">
-                
-                <!-- Image Container: Holds image + ADD button -->
-                <div class="product-image-container">
-                    <img 
-                        src="https://cdn.zeptonow.com/production/ik-seo/tr:w-403,ar-1500-1500,pr-true,f-auto,q-40,dpr-2/cms/product_variant/33c37239-b1c9-4997-9a9b-e1d04317c4f1/Mr-Muscle-Kitchen-Cleaner-Spray-Fresh-Lemon.jpeg" 
-                        alt="Mr. Muscle Kitchen Cleaner"
-                        class="product-image"
-                    >
-                    <button class="add-button">ADD</button>
-                </div>
-                
-                <!-- Product Details -->
-                <div class="product-details">
-                    
-                    <!-- Price Row -->
-                    <div class="price-row">
-                        <span class="current-price">₹166</span>
-                        <span class="original-price">₹249</span>
-                    </div>
-                    
-                    <!-- Discount Badge -->
-                    <span class="discount-badge">₹83 OFF</span>
-                    
-                    <!-- Product Name -->
-                    <h3 class="product-name">Mr. Muscle Kitchen Cleaner Spray, Fresh</h3>
-                    
-                    <!-- Product Quantity -->
-                    <p class="product-quantity">1 pack (500 ml)</p>
-                    
-                    <!-- Rating -->
-                    <div class="rating">
-                        <span class="star">⭐</span>
-                        <span class="rating-value">4.8</span>
-                        <span class="rating-count">(34.5k)</span>
-                    </div>
-                    
-                </div>
-            </article>
-            
-            <!-- CARD 2 -->
-            <article class="product-card">
-                <div class="product-image-container">
-                    <img 
-                        src="https://via.placeholder.com/" 
-                        alt="Happi Planet Kitchen Cleaner"
-                        class="product-image"
-                    >
-                    <button class="add-button">ADD</button>
-                </div>
-                <div class="product-details">
-                    <div class="price-row">
-                        <span class="current-price">₹198</span>
-                        <span class="original-price">₹299</span>
-                    </div>
-                    <span class="discount-badge">₹101 OFF</span>
-                    <h3 class="product-name">Happi Planet Kitchen Cleaner Spray</h3>
-                    <p class="product-quantity">1 pack (500 ml)</p>
-                    <div class="rating">
-                        <span class="star">⭐</span>
-                        <span class="rating-value">4.5</span>
-                        <span class="rating-count">(12.3k)</span>
-                    </div>
-                </div>
-            </article>
-            
-            <!-- CARD 3 -->
-            <article class="product-card">
-                <div class="product-image-container">
-                    <img 
-                        src="https://via.placeholder.com/" 
-                        alt="Beco Natural Floor Cleaner"
-                        class="product-image"
-                    >
-                    <button class="add-button">ADD</button>
-                </div>
-                <div class="product-details">
-                    <div class="price-row">
-                        <span class="current-price">₹103</span>
-                        <span class="original-price">₹205</span>
-                    </div>
-                    <span class="discount-badge">₹102 OFF</span>
-                    <h3 class="product-name">Beco Natural Floor Cleaner Liquid</h3>
-                    <p class="product-quantity">1 bottle (950 ml)</p>
-                    <div class="rating">
-                        <span class="star">⭐</span>
-                        <span class="rating-value">4.6</span>
-                        <span class="rating-count">(8.2k)</span>
-                    </div>
-                </div>
-            </article>
-            
-            <!-- CARD 4 -->
-            <article class="product-card">
-                <div class="product-image-container">
-                    <img 
-                        src="https://via.placeholder.com/" 
-                        alt="Lizol Kitchen Cleaning Spray"
-                        class="product-image"
-                    >
-                    <button class="add-button">ADD</button>
-                </div>
-                <div class="product-details">
-                    <div class="price-row">
-                        <span class="current-price">₹153</span>
-                        <span class="original-price">₹225</span>
-                    </div>
-                    <span class="discount-badge">₹72 OFF</span>
-                    <h3 class="product-name">Lizol Kitchen Cleaning Spray, Citrus</h3>
-                    <p class="product-quantity">1 pack (450 ml)</p>
-                    <div class="rating">
-                        <span class="star">⭐</span>
-                        <span class="rating-value">4.7</span>
-                        <span class="rating-count">(15.6k)</span>
-                    </div>
-                </div>
-            </article>
-            
+
+    <!-- ========== LOADING SCREEN ========== -->
+    <div id="loading-screen">
+        <lottie-player
+            src="assets/epsd.json"
+            background="transparent"
+            speed="1"
+            style="width: 200px; height: 200px;"
+            loop
+            autoplay>
+        </lottie-player>
+        <p class="loading-text">Loading Verdail...</p>
+    </div>
+
+    <!-- ========== CART POPUP (shows when ADD clicked) ========== -->
+    <div id="cart-popup" class="cart-popup hidden">
+        <div class="cart-popup-content">
+            <button class="close-popup">&times;</button>
+            <h3>Sign in to add items</h3>
+            <p>Please sign in or create an account to add items to your cart.</p>
+            <a href="source/Sign-Up.html" class="popup-btn signup-btn">Sign Up</a>
+            <a href="source/Sign-Up.html" class="popup-btn signin-btn">Sign In</a>
         </div>
-    </section>
-
-<section class="testimonials">
-  <h2>What Our Customers Say</h2>
-
-  <!-- Slider wrapper -->
-  <div class="testimonial-slider">
-    <!-- Track that moves left/right -->
-    <div class="testimonial-track">
-      <div class="testimonial-card active">
-        <div class="stars">⭐⭐⭐⭐⭐</div>
-        <p>"Super fast delivery! Got my groceries in 8 minutes. Great quality products at good prices."</p>
-        <h4>Priya Sharma</h4>
-        <p class="location">Chennai</p>
-      </div>
-
-      <div class="testimonial-card">
-        <div class="stars">⭐⭐⭐⭐⭐</div>
-        <p>"Best grocery app I've used. Products are fresh and delivery is incredibly fast. Highly recommended!"</p>
-        <h4>Rajesh Kumar</h4>
-        <p class="location">Tiruvallur</p>
-      </div>
-
-      <div class="testimonial-card">
-        <div class="stars">⭐⭐⭐⭐⭐</div>
-        <p>"Love the convenience and speed. The app is very user-friendly and prices are competitive."</p>
-        <h4>Anjali Singh</h4>
-        <p class="location">Kancheepuram</p>
-      </div>
     </div>
 
-    <!-- Dots navigation -->
-    <div class="testimonial-dots">
-      <button class="dot active" data-index="0"></button>
-      <button class="dot" data-index="1"></button>
-      <button class="dot" data-index="2"></button>
+    <!-- ========== MAIN CONTENT ========== -->
+    <div id="main-content">
+
+        <!-- HEADER: Your teammates will do this -->
+        <header>
+            <div class="logo-container">
+                <img src="assets/4-Photoroom.svg" alt="Verdail Logo" class="logo">
+            </div>
+        </header>
+
+        <!-- ========== MAIN SECTION ========== -->
+        <main>
+
+            <!-- HERO BANNER SECTION - Two side by side banners -->
+            <section class="hero-banners">
+                <img src="assets/supersaver_PC_4._SX1500_QL85_.jpg" alt="Super Saver Deals" class="hero-banner-img">
+                <img src="assets/Your paragraph text.png" alt="Fresh Deals" class="hero-banner-img">
+            </section>
+
+            <!-- ===== RICE & DALS SECTION ===== -->
+            <section class="product-section">
+                <h2 class="section-title">Rice & Dals</h2>
+                <div class="product-grid">
+
+                    <!-- Daawat Rozana Basmati Rice -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Daawat-Rozana-Super-Basmati-Rice-Medium-Grain.webp" alt="Daawat Rozana Basmati Rice" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹185</span>
+                                <span class="original-price">₹220</span>
+                            </div>
+                            <span class="discount-badge">₹35 OFF</span>
+                            <h3 class="product-name">Daawat Rozana Super Basmati Rice</h3>
+                            <p class="product-quantity">1 kg</p>
+                        </div>
+                    </article>
+
+                    <!-- Fortune Sona Masoori -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Fortune-Sona-Masoori-Regular.webp" alt="Fortune Sona Masoori Rice" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹72</span>
+                                <span class="original-price">₹85</span>
+                            </div>
+                            <span class="discount-badge">₹13 OFF</span>
+                            <h3 class="product-name">Fortune Sona Masoori Regular</h3>
+                            <p class="product-quantity">1 kg</p>
+                        </div>
+                    </article>
+
+                    <!-- Daily Good Sona Masoori -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Daily-Good-Sona-Masoori-Raw-Rice.webp" alt="Daily Good Sona Masoori" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹65</span>
+                                <span class="original-price">₹78</span>
+                            </div>
+                            <span class="discount-badge">₹13 OFF</span>
+                            <h3 class="product-name">Daily Good Sona Masoori Raw Rice</h3>
+                            <p class="product-quantity">1 kg</p>
+                        </div>
+                    </article>
+
+                    <!-- India Gate Dubar Basmati -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/India-Gate-Flavourful-and-Fine-Dubar-Basmati-Rice-Long-and-Slender-Grains-Naturally-Aged.webp" alt="India Gate Dubar Basmati" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹210</span>
+                                <span class="original-price">₹250</span>
+                            </div>
+                            <span class="discount-badge">₹40 OFF</span>
+                            <h3 class="product-name">India Gate Dubar Basmati Rice</h3>
+                            <p class="product-quantity">1 kg</p>
+                        </div>
+                    </article>
+
+                    <!-- Daily Good Idli Rice -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Daily-Good-Idli-Rice.webp" alt="Daily Good Idli Rice" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹55</span>
+                                <span class="original-price">₹68</span>
+                            </div>
+                            <span class="discount-badge">₹13 OFF</span>
+                            <h3 class="product-name">Daily Good Idli Rice</h3>
+                            <p class="product-quantity">1 kg</p>
+                        </div>
+                    </article>
+
+                    <!-- GTS Kolam Rice -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/GTS-Original-Kolam-Rice.webp" alt="GTS Original Kolam Rice" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹78</span>
+                                <span class="original-price">₹95</span>
+                            </div>
+                            <span class="discount-badge">₹17 OFF</span>
+                            <h3 class="product-name">GTS Original Kolam Rice</h3>
+                            <p class="product-quantity">1 kg</p>
+                        </div>
+                    </article>
+
+                    <!-- Shree Akshara Sona Masoori -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Shree-Akshara-Premium-Sona-Masoori-Rice-Steam.webp" alt="Shree Akshara Sona Masoori" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹82</span>
+                                <span class="original-price">₹99</span>
+                            </div>
+                            <span class="discount-badge">₹17 OFF</span>
+                            <h3 class="product-name">Shree Akshara Premium Sona Masoori</h3>
+                            <p class="product-quantity">1 kg</p>
+                        </div>
+                    </article>
+
+                    <!-- India Gate Jeera Rice -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/India-Gate-Jeera-Rice-Short-Grain.webp" alt="India Gate Jeera Rice" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹145</span>
+                                <span class="original-price">₹175</span>
+                            </div>
+                            <span class="discount-badge">₹30 OFF</span>
+                            <h3 class="product-name">India Gate Jeera Rice Short Grain</h3>
+                            <p class="product-quantity">1 kg</p>
+                        </div>
+                    </article>
+
+                    <!-- Tata Sampann Toor Dal -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Tata-Sampann-Unpolished-Toor-Dal-Arhar-Dal.webp" alt="Tata Sampann Toor Dal" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹155</span>
+                                <span class="original-price">₹185</span>
+                            </div>
+                            <span class="discount-badge">₹30 OFF</span>
+                            <h3 class="product-name">Tata Sampann Unpolished Toor Dal</h3>
+                            <p class="product-quantity">1 kg</p>
+                        </div>
+                    </article>
+
+                    <!-- Tata Sampann Chana Dal -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Tata-Sampann-Unpolished-Chana-Dal.webp" alt="Tata Sampann Chana Dal" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹125</span>
+                                <span class="original-price">₹150</span>
+                            </div>
+                            <span class="discount-badge">₹25 OFF</span>
+                            <h3 class="product-name">Tata Sampann Unpolished Chana Dal</h3>
+                            <p class="product-quantity">1 kg</p>
+                        </div>
+                    </article>
+
+                    <!-- Tata Sampann Moong Dal -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Tata-Sampann-Unpolished-Green-Moong-.webp" alt="Tata Sampann Green Moong" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹145</span>
+                                <span class="original-price">₹175</span>
+                            </div>
+                            <span class="discount-badge">₹30 OFF</span>
+                            <h3 class="product-name">Tata Sampann Unpolished Green Moong</h3>
+                            <p class="product-quantity">500 g</p>
+                        </div>
+                    </article>
+
+                    <!-- Tata Sampann Masoor -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Tata-Sampann-Unpolished-Masoor-Whole.webp" alt="Tata Sampann Masoor Whole" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹95</span>
+                                <span class="original-price">₹115</span>
+                            </div>
+                            <span class="discount-badge">₹20 OFF</span>
+                            <h3 class="product-name">Tata Sampann Unpolished Masoor Whole</h3>
+                            <p class="product-quantity">500 g</p>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- ===== DAIRY PRODUCTS SECTION ===== -->
+            <section class="product-section">
+                <h2 class="section-title">Dairy Products</h2>
+                <div class="product-grid">
+
+                    <!-- Amul Paneer -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Amul-Fresh-Malai-Paneer.webp" alt="Amul Fresh Malai Paneer" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹90</span>
+                                <span class="original-price">₹100</span>
+                            </div>
+                            <span class="discount-badge">₹10 OFF</span>
+                            <h3 class="product-name">Amul Fresh Malai Paneer</h3>
+                            <p class="product-quantity">200 g</p>
+                        </div>
+                    </article>
+
+                    <!-- Amul Butter -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Amul-Salted-Butter.webp" alt="Amul Salted Butter" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹56</span>
+                                <span class="original-price">₹62</span>
+                            </div>
+                            <span class="discount-badge">₹6 OFF</span>
+                            <h3 class="product-name">Amul Salted Butter</h3>
+                            <p class="product-quantity">100 g</p>
+                        </div>
+                    </article>
+
+                    <!-- Amul Butter Chiplets -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Amul-Salted-Butter-Chiplets-.webp" alt="Amul Salted Butter Chiplets" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹25</span>
+                                <span class="original-price">₹30</span>
+                            </div>
+                            <span class="discount-badge">₹5 OFF</span>
+                            <h3 class="product-name">Amul Salted Butter Chiplets</h3>
+                            <p class="product-quantity">20 g x 5</p>
+                        </div>
+                    </article>
+
+                    <!-- Milky Mist Paneer -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Milky-Mist-Paneer.webp" alt="Milky Mist Paneer" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹85</span>
+                                <span class="original-price">₹95</span>
+                            </div>
+                            <span class="discount-badge">₹10 OFF</span>
+                            <h3 class="product-name">Milky Mist Paneer</h3>
+                            <p class="product-quantity">200 g</p>
+                        </div>
+                    </article>
+
+                    <!-- Milky Mist Cheese Slices -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Milky-Mist-Cheese-Slices.webp" alt="Milky Mist Cheese Slices" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹120</span>
+                                <span class="original-price">₹140</span>
+                            </div>
+                            <span class="discount-badge">₹20 OFF</span>
+                            <h3 class="product-name">Milky Mist Cheese Slices</h3>
+                            <p class="product-quantity">200 g</p>
+                        </div>
+                    </article>
+
+                    <!-- Milky Mist Greek Yogurt -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Milky-Mist-Greek-Yogurt.webp" alt="Milky Mist Greek Yogurt" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹75</span>
+                                <span class="original-price">₹90</span>
+                            </div>
+                            <span class="discount-badge">₹15 OFF</span>
+                            <h3 class="product-name">Milky Mist Greek Yogurt</h3>
+                            <p class="product-quantity">100 g</p>
+                        </div>
+                    </article>
+
+                    <!-- Milky Mist Blueberry Yogurt -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Milky-Mist-Fruit-Yogurt-Blueberry.webp" alt="Milky Mist Blueberry Yogurt" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹40</span>
+                                <span class="original-price">₹50</span>
+                            </div>
+                            <span class="discount-badge">₹10 OFF</span>
+                            <h3 class="product-name">Milky Mist Fruit Yogurt Blueberry</h3>
+                            <p class="product-quantity">100 g</p>
+                        </div>
+                    </article>
+
+                    <!-- Hatsun Mixed Berry Yogurt -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Hatsun-Fruit-Yoghurt-Mixed-Berry.webp" alt="Hatsun Mixed Berry Yoghurt" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹35</span>
+                                <span class="original-price">₹45</span>
+                            </div>
+                            <span class="discount-badge">₹10 OFF</span>
+                            <h3 class="product-name">Hatsun Fruit Yoghurt Mixed Berry</h3>
+                            <p class="product-quantity">100 g</p>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- ===== SNACKS & CHIPS SECTION ===== -->
+            <section class="product-section">
+                <h2 class="section-title">Snacks & Chips</h2>
+                <div class="product-grid">
+
+                    <!-- Lays Magic Masala -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Lay-s-India-s-Magic-Masala-Crunchy-Potato-Chips.webp" alt="Lays Magic Masala" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹20</span>
+                                <span class="original-price">₹20</span>
+                            </div>
+                            <h3 class="product-name">Lay's India's Magic Masala Potato Chips</h3>
+                            <p class="product-quantity">52 g</p>
+                        </div>
+                    </article>
+
+                    <!-- Lays Hot n Sweet Chilli -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Lay-s-West-Indies-Hot-n-Sweet-Chilli-Potato-Chips.webp" alt="Lays Hot n Sweet Chilli" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹20</span>
+                                <span class="original-price">₹20</span>
+                            </div>
+                            <h3 class="product-name">Lay's West Indies Hot n Sweet Chilli</h3>
+                            <p class="product-quantity">52 g</p>
+                        </div>
+                    </article>
+
+                    <!-- Bingo Mad Angles -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Bingo-Mad-Angles-Very-Peri-Peri-Crisps-Crunchy-Enjoyable.webp" alt="Bingo Mad Angles Peri Peri" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹20</span>
+                                <span class="original-price">₹20</span>
+                            </div>
+                            <h3 class="product-name">Bingo Mad Angles Very Peri Peri</h3>
+                            <p class="product-quantity">66 g</p>
+                        </div>
+                    </article>
+
+                    <!-- Bingo Chilli Sprinkled -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Bingo-Original-Style-Chilli-Sprinkled-Flat-Cut-Spicy-Potato-Chips-Pack-for-Snacks.webp" alt="Bingo Chilli Sprinkled" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹20</span>
+                                <span class="original-price">₹20</span>
+                            </div>
+                            <h3 class="product-name">Bingo Original Style Chilli Sprinkled</h3>
+                            <p class="product-quantity">52 g</p>
+                        </div>
+                    </article>
+
+                    <!-- Uncle Chipps Plain Salted -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Uncle-Chipps-Plain-Salted-Crunchy-Potato-Chips.webp" alt="Uncle Chipps Plain Salted" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹20</span>
+                                <span class="original-price">₹20</span>
+                            </div>
+                            <h3 class="product-name">Uncle Chipps Plain Salted Crunchy</h3>
+                            <p class="product-quantity">55 g</p>
+                        </div>
+                    </article>
+
+                    <!-- Uncle Chipps Spicy Treat -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Uncle-Chipps-Spicy-Treat-Crunchy-Potato-Chips.webp" alt="Uncle Chipps Spicy Treat" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹20</span>
+                                <span class="original-price">₹20</span>
+                            </div>
+                            <h3 class="product-name">Uncle Chipps Spicy Treat Crunchy</h3>
+                            <p class="product-quantity">55 g</p>
+                        </div>
+                    </article>
+
+                    <!-- Peppy Cheese Balls -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Peppy-Cheese-Balls-Crunchy-Snack.webp" alt="Peppy Cheese Balls" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹10</span>
+                                <span class="original-price">₹10</span>
+                            </div>
+                            <h3 class="product-name">Peppy Cheese Balls Crunchy Snack</h3>
+                            <p class="product-quantity">35 g</p>
+                        </div>
+                    </article>
+
+                    <!-- Piknik Classic Tomato -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Piknik-Classic-Tomato-Chilli-Spicy-Snack.webp" alt="Piknik Classic Tomato Chilli" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹10</span>
+                                <span class="original-price">₹10</span>
+                            </div>
+                            <h3 class="product-name">Piknik Classic Tomato Chilli Spicy</h3>
+                            <p class="product-quantity">30 g</p>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- ===== BEVERAGES SECTION ===== -->
+            <section class="product-section">
+                <h2 class="section-title">Beverages</h2>
+                <div class="product-grid">
+
+                    <!-- Pepsi -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Pepsi-Soft-Drink-Carbonated-Beverage.webp" alt="Pepsi Soft Drink" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹40</span>
+                                <span class="original-price">₹40</span>
+                            </div>
+                            <h3 class="product-name">Pepsi Soft Drink Carbonated Beverage</h3>
+                            <p class="product-quantity">750 ml</p>
+                        </div>
+                    </article>
+
+                    <!-- Diet Coke -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Coca-Cola-Diet-Coke-Soft-Drink-Can-Low-Calorie-Fizzy.webp" alt="Diet Coke" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹40</span>
+                                <span class="original-price">₹40</span>
+                            </div>
+                            <h3 class="product-name">Coca-Cola Diet Coke Low Calorie</h3>
+                            <p class="product-quantity">300 ml</p>
+                        </div>
+                    </article>
+
+                    <!-- Bisleri Soda -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Bisleri-Soda-Sparkling-Mineral-Water.webp" alt="Bisleri Soda" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹15</span>
+                                <span class="original-price">₹15</span>
+                            </div>
+                            <h3 class="product-name">Bisleri Soda Sparkling Mineral Water</h3>
+                            <p class="product-quantity">600 ml</p>
+                        </div>
+                    </article>
+
+                    <!-- Kinley Soda -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Kinley-Soda-Refreshing-Carbonated-Drink.webp" alt="Kinley Soda" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹20</span>
+                                <span class="original-price">₹20</span>
+                            </div>
+                            <h3 class="product-name">Kinley Soda Refreshing Carbonated</h3>
+                            <p class="product-quantity">750 ml</p>
+                        </div>
+                    </article>
+
+                    <!-- Sting Energy -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Sting-Energy-Drink-Pet.webp" alt="Sting Energy Drink" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹20</span>
+                                <span class="original-price">₹20</span>
+                            </div>
+                            <h3 class="product-name">Sting Energy Drink</h3>
+                            <p class="product-quantity">250 ml</p>
+                        </div>
+                    </article>
+
+                    <!-- Monster Energy -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Monster-Energy-Ultra-Zero-Sugar-Carbonated-Caffeinated-Beverage.webp" alt="Monster Energy" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹125</span>
+                                <span class="original-price">₹125</span>
+                            </div>
+                            <h3 class="product-name">Monster Energy Ultra Zero Sugar</h3>
+                            <p class="product-quantity">350 ml</p>
+                        </div>
+                    </article>
+
+                    <!-- HELL Energy -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/HELL-Energy-Drink-Classic-Canned-Beverage.webp" alt="HELL Energy Drink" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹99</span>
+                                <span class="original-price">₹99</span>
+                            </div>
+                            <h3 class="product-name">HELL Energy Drink Classic Canned</h3>
+                            <p class="product-quantity">250 ml</p>
+                        </div>
+                    </article>
+
+                    <!-- Bloody Bubbly -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Bloody-Bubbly-Spicy-Lemon-Soda.webp" alt="Bloody Bubbly Spicy Lemon" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹30</span>
+                                <span class="original-price">₹30</span>
+                            </div>
+                            <h3 class="product-name">Bloody Bubbly Spicy Lemon Soda</h3>
+                            <p class="product-quantity">250 ml</p>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- ===== PERSONAL CARE SECTION ===== -->
+            <section class="product-section">
+                <h2 class="section-title">Personal Care & Beauty</h2>
+                <div class="product-grid">
+
+                    <!-- Pears Soap -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Pears-Moisturising-Bathing-Bar-Soap-with-Glycerine-Pure-Gentle-For-Golden-Glow.webp" alt="Pears Moisturising Soap" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹99</span>
+                                <span class="original-price">₹115</span>
+                            </div>
+                            <span class="discount-badge">₹16 OFF</span>
+                            <h3 class="product-name">Pears Moisturising Bathing Bar Soap</h3>
+                            <p class="product-quantity">125 g</p>
+                        </div>
+                    </article>
+
+                    <!-- Pears Pure Gentle -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Pears-Pure-Gentle-Bathing-Soap.webp" alt="Pears Pure Gentle Soap" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹95</span>
+                                <span class="original-price">₹110</span>
+                            </div>
+                            <span class="discount-badge">₹15 OFF</span>
+                            <h3 class="product-name">Pears Pure & Gentle Bathing Soap</h3>
+                            <p class="product-quantity">125 g</p>
+                        </div>
+                    </article>
+
+                    <!-- Cinthol Soap -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Cinthol-Original-Bath-Soap.webp" alt="Cinthol Original Bath Soap" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹45</span>
+                                <span class="original-price">₹52</span>
+                            </div>
+                            <span class="discount-badge">₹7 OFF</span>
+                            <h3 class="product-name">Cinthol Original Bath Soap</h3>
+                            <p class="product-quantity">100 g</p>
+                        </div>
+                    </article>
+
+                    <!-- Dettol Handwash Refill -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Dettol-Aloe-Coconut-Hand-Wash-Refill-For-Foaming-Handwash-Pumps.webp" alt="Dettol Handwash Refill" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹99</span>
+                                <span class="original-price">₹120</span>
+                            </div>
+                            <span class="discount-badge">₹21 OFF</span>
+                            <h3 class="product-name">Dettol Aloe Coconut Hand Wash Refill</h3>
+                            <p class="product-quantity">200 ml</p>
+                        </div>
+                    </article>
+
+                    <!-- BECO Handwash -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/BECO-Moisturising-Liquid-Handwash-Moringa-Fragrance.webp" alt="BECO Liquid Handwash" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹149</span>
+                                <span class="original-price">₹179</span>
+                            </div>
+                            <span class="discount-badge">₹30 OFF</span>
+                            <h3 class="product-name">BECO Moisturising Liquid Handwash</h3>
+                            <p class="product-quantity">250 ml</p>
+                        </div>
+                    </article>
+
+                    <!-- Dermicool Powder -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Dermicool-Prickly-Heat-Powder-Menthol-Regular-Dermicool-Free.webp" alt="Dermicool Prickly Heat Powder" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹110</span>
+                                <span class="original-price">₹130</span>
+                            </div>
+                            <span class="discount-badge">₹20 OFF</span>
+                            <h3 class="product-name">Dermicool Prickly Heat Powder Menthol</h3>
+                            <p class="product-quantity">150 g</p>
+                        </div>
+                    </article>
+
+                    <!-- Nycil Powder -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Nycil-Germ-Expert-Prickly-Heat-Powder-Cool-Herbal-Get-Cool-Herbal-60-g-Free-.webp" alt="Nycil Cool Herbal Powder" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹145</span>
+                                <span class="original-price">₹175</span>
+                            </div>
+                            <span class="discount-badge">₹30 OFF</span>
+                            <h3 class="product-name">Nycil Cool Herbal Prickly Heat Powder</h3>
+                            <p class="product-quantity">150 g + 60 g Free</p>
+                        </div>
+                    </article>
+
+                    <!-- Yardley Talcum -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Yardley-London-English-Lavender-Perfumed-Talcum-Powder-For-Women.webp" alt="Yardley Talcum Powder" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹185</span>
+                                <span class="original-price">₹225</span>
+                            </div>
+                            <span class="discount-badge">₹40 OFF</span>
+                            <h3 class="product-name">Yardley English Lavender Talcum Powder</h3>
+                            <p class="product-quantity">250 g</p>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- ===== HAIR CARE SECTION ===== -->
+            <section class="product-section">
+                <h2 class="section-title">Hair Care</h2>
+                <div class="product-grid">
+
+                    <!-- Parachute Coconut Oil -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Parachute-100-Pure-Coconut-Oil.webp" alt="Parachute Coconut Oil" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹145</span>
+                                <span class="original-price">₹170</span>
+                            </div>
+                            <span class="discount-badge">₹25 OFF</span>
+                            <h3 class="product-name">Parachute 100% Pure Coconut Oil</h3>
+                            <p class="product-quantity">200 ml</p>
+                        </div>
+                    </article>
+
+                    <!-- Bajaj Almond Drops -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Bajaj-Almond-Drops-Hair-Oil-with-2x-Hairfall-Reduction-and-6x-Vitamin-E-Almond-Oil.webp" alt="Bajaj Almond Drops" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹125</span>
+                                <span class="original-price">₹150</span>
+                            </div>
+                            <span class="discount-badge">₹25 OFF</span>
+                            <h3 class="product-name">Bajaj Almond Drops Hair Oil</h3>
+                            <p class="product-quantity">200 ml</p>
+                        </div>
+                    </article>
+
+                    <!-- Parachute Anti Dandruff Cream -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Parachute-Advansed-Men-Hair-Cream-Anti-Dandruff.webp" alt="Parachute Anti Dandruff Cream" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹70</span>
+                                <span class="original-price">₹85</span>
+                            </div>
+                            <span class="discount-badge">₹15 OFF</span>
+                            <h3 class="product-name">Parachute Men Anti Dandruff Hair Cream</h3>
+                            <p class="product-quantity">100 g</p>
+                        </div>
+                    </article>
+
+                    <!-- Livon Serum -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Livon-Anti-Frizz-Serum-Frizz-free-Smooth-Hair-with-Argan-Oil-Vitamin-E.webp" alt="Livon Anti Frizz Serum" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹165</span>
+                                <span class="original-price">₹199</span>
+                            </div>
+                            <span class="discount-badge">₹34 OFF</span>
+                            <h3 class="product-name">Livon Anti Frizz Serum with Argan Oil</h3>
+                            <p class="product-quantity">50 ml</p>
+                        </div>
+                    </article>
+
+                    <!-- L'Oreal Shampoo -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/L-Oreal-Paris-Hyaluronic-Moisture-Shampoo.webp" alt="L'Oreal Hyaluronic Shampoo" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹199</span>
+                                <span class="original-price">₹249</span>
+                            </div>
+                            <span class="discount-badge">₹50 OFF</span>
+                            <h3 class="product-name">L'Oreal Paris Hyaluronic Moisture Shampoo</h3>
+                            <p class="product-quantity">180 ml</p>
+                        </div>
+                    </article>
+
+                    <!-- L'Oreal Conditioner -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/L-Oreal-Paris-Hyaluron-Moisture-72H-Moisture-Sealing-Conditioner-for-Dehydrated-Hair.webp" alt="L'Oreal Conditioner" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹199</span>
+                                <span class="original-price">₹249</span>
+                            </div>
+                            <span class="discount-badge">₹50 OFF</span>
+                            <h3 class="product-name">L'Oreal Paris Hyaluron Moisture Conditioner</h3>
+                            <p class="product-quantity">180 ml</p>
+                        </div>
+                    </article>
+
+                    <!-- Streax Serum -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Streax-Professional-Vitariche-Gloss-Hair-Serum.webp" alt="Streax Hair Serum" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹185</span>
+                                <span class="original-price">₹225</span>
+                            </div>
+                            <span class="discount-badge">₹40 OFF</span>
+                            <h3 class="product-name">Streax Professional Vitariche Gloss Serum</h3>
+                            <p class="product-quantity">100 ml</p>
+                        </div>
+                    </article>
+
+                    <!-- Plix Rosemary Spray -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Plix-The-Plant-Fix-Rosemary-Hair-Growth-Advanced-Hair-Spray-For-Fuller-Thicker-Hair.webp" alt="Plix Rosemary Hair Spray" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹399</span>
+                                <span class="original-price">₹499</span>
+                            </div>
+                            <span class="discount-badge">₹100 OFF</span>
+                            <h3 class="product-name">Plix Rosemary Hair Growth Spray</h3>
+                            <p class="product-quantity">100 ml</p>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- ===== CLEANING SUPPLIES SECTION ===== -->
+            <section class="product-section">
+                <h2 class="section-title">Cleaning Supplies</h2>
+                <div class="product-grid">
+
+                    <!-- Koparo Kitchen Degreaser -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Koparo-Kitchen-Degreaser-Cleaner.webp" alt="Koparo Kitchen Degreaser" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹299</span>
+                                <span class="original-price">₹349</span>
+                            </div>
+                            <span class="discount-badge">₹50 OFF</span>
+                            <h3 class="product-name">Koparo Kitchen Degreaser Cleaner</h3>
+                            <p class="product-quantity">500 ml</p>
+                        </div>
+                    </article>
+
+                    <!-- Rin Matic Liquid -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Rin-Matic-Front-Load-Detergent-Liquid-Pouch.webp" alt="Rin Matic Detergent Liquid" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹199</span>
+                                <span class="original-price">₹249</span>
+                            </div>
+                            <span class="discount-badge">₹50 OFF</span>
+                            <h3 class="product-name">Rin Matic Front Load Detergent Liquid</h3>
+                            <p class="product-quantity">1 L</p>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- ===== DRY FRUITS & NUTS SECTION ===== -->
+            <section class="product-section">
+                <h2 class="section-title">Dry Fruits & Nuts</h2>
+                <div class="product-grid">
+
+                    <!-- Daily Good Peanuts -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Daily-Good-Raw-Peanut-Singdana.webp" alt="Daily Good Raw Peanuts" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹65</span>
+                                <span class="original-price">₹80</span>
+                            </div>
+                            <span class="discount-badge">₹15 OFF</span>
+                            <h3 class="product-name">Daily Good Raw Peanut Singdana</h3>
+                            <p class="product-quantity">500 g</p>
+                        </div>
+                    </article>
+
+                    <!-- Khetika Peanuts -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Khetika-Premium-Raw-Peanuts-Mungfali-Groundnut-Singdana.webp" alt="Khetika Premium Peanuts" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹89</span>
+                                <span class="original-price">₹110</span>
+                            </div>
+                            <span class="discount-badge">₹21 OFF</span>
+                            <h3 class="product-name">Khetika Premium Raw Peanuts</h3>
+                            <p class="product-quantity">500 g</p>
+                        </div>
+                    </article>
+
+                    <!-- Fried Gram -->
+                    <article class="product-card">
+                        <div class="product-image-container">
+                            <img src="product-images/Sri-Bhagyalakshmi-Fried-Gram.webp" alt="Sri Bhagyalakshmi Fried Gram" class="product-image">
+                            <button class="add-button">ADD</button>
+                        </div>
+                        <div class="product-details">
+                            <div class="price-row">
+                                <span class="current-price">₹55</span>
+                                <span class="original-price">₹65</span>
+                            </div>
+                            <span class="discount-badge">₹10 OFF</span>
+                            <h3 class="product-name">Sri Bhagyalakshmi Fried Gram</h3>
+                            <p class="product-quantity">250 g</p>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- PROMO BANNERS -->
+            <section class="promo-section">
+                <div class="promo-card promo-green">
+                    <h3>₹0 DELIVERY FEE</h3>
+                    <p>On all orders above ₹199</p>
+                    <ul class="promo-list">
+                        <li>✓ No Handling Fee</li>
+                        <li>✓ No Surge Fee</li>
+                        <li>✓ No Hidden Charges</li>
+                    </ul>
+                </div>
+                <div class="promo-card promo-mint">
+                    <h3>FRESH GUARANTEE</h3>
+                    <p>100% fresh or full refund</p>
+                    <ul class="promo-list">
+                        <li>✓ Farm Fresh Veggies</li>
+                        <li>✓ Same Day Delivery</li>
+                        <li>✓ Quality Checked</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- TESTIMONIALS SECTION -->
+            <section class="testimonials">
+                <h2>What Our Customers Say</h2>
+                <div class="testimonial-slider">
+                    <div class="testimonial-track">
+                        <div class="testimonial-card">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <p>"Super fast delivery! Got my groceries in 8 minutes. Great quality products at good prices."</p>
+                            <h4>Priya Sharma</h4>
+                            <p class="location">Chennai</p>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <p>"Best grocery app I've used. Products are fresh and delivery is incredibly fast!"</p>
+                            <h4>Rajesh Kumar</h4>
+                            <p class="location">Tiruvallur</p>
+                        </div>
+                        <div class="testimonial-card">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <p>"Love the convenience and speed. The app is very user-friendly and prices are competitive."</p>
+                            <h4>Anjali Singh</h4>
+                            <p class="location">Kancheepuram</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-dots">
+                        <button class="dot active" data-index="0"></button>
+                        <button class="dot" data-index="1"></button>
+                        <button class="dot" data-index="2"></button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- FOOTER: Your teammates will do this -->
+        <footer>
+        </footer>
+
     </div>
-  </div>
-</section>
-    </main>
 
-    <script>
-  const track = document.querySelector('.testimonial-track');
-  const dots = document.querySelectorAll('.testimonial-dots .dot');
-  const totalSlides = dots.length;
-
-  function goToSlide(index) {
-    // Move track
-    track.style.transform = `translateX(-${index * 100}%)`;
-
-    // Update active dot
-    dots.forEach(dot => dot.classList.remove('active'));
-    dots[index].classList.add('active');
-  }
-
-  // Click handlers for dots
-  dots.forEach(dot => {
-    dot.addEventListener('click', () => {
-      const index = parseInt(dot.getAttribute('data-index'));
-      goToSlide(index);
-    });
-  });
-
-  // Optional: auto-slide every 5s
-  let current = 0;
-  setInterval(() => {
-    current = (current + 1) % totalSlides;
-    goToSlide(current);
-  }, 5000);
-</script>
+    <script src="script.js"></script>
 </body>
 </html>
