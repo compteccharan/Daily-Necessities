@@ -176,3 +176,78 @@ li:hover{
     font-size: 0.75rem;  /* the total people starred kinda shi*/
     color: #757575;
 }
+
+/* Customer Review Part CSS */
+.testimonials {
+  padding: 40px 20px;
+  text-align: center;
+  background: #f7f7f7;
+}
+
+.testimonials h2 {
+  margin-bottom: 24px;
+  font-size: 2rem;
+}
+
+/* Slider container */
+.testimonial-slider {
+  max-width: 700px;
+  margin: 0 auto;
+  overflow: hidden;           /* Hide extra slides */
+  position: relative;
+}
+
+/* Track that moves */
+.testimonial-track {
+  display: flex;
+  transition: transform 0.5s ease;  /* Smooth slide */
+}
+
+/* Each card takes full width of slider */
+.testimonial-card {
+  min-width: 100%;
+  box-sizing: border-box;
+  padding: 24px 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.testimonial-card p {
+  margin: 10px 0;
+}
+
+.stars {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  color: #f5a623;
+}
+
+.location {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Dots */
+.testimonial-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.testimonial-dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: #ccc;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.testimonial-dots .dot.active {
+  background: #1e90ff;
+  transform: scale(1.2);
+}

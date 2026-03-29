@@ -150,29 +150,73 @@
         </div>
     </section>
 
-        <section class="testimonials">
-            <h2>What Our Customers Say</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p>"Super fast delivery! Got my groceries in 8 minutes. Great quality products at good prices."</p>
-                    <h4>Priya Sharma</h4>
-                    <p class="location">Chennai</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p>"Best grocery app I've used. Products are fresh and delivery is incredibly fast. Highly recommended!"</p>
-                    <h4>Rajesh Kumar</h4>
-                    <p class="location">Tiruvallur</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
-                    <p>"Love the convenience and speed. The app is very user-friendly and prices are competitive."</p>
-                    <h4>Anjali Singh</h4>
-                    <p class="location">Kancheepuram</p>
-                </div>
-            </div>
-        </section>
+<section class="testimonials">
+  <h2>What Our Customers Say</h2>
+
+  <!-- Slider wrapper -->
+  <div class="testimonial-slider">
+    <!-- Track that moves left/right -->
+    <div class="testimonial-track">
+      <div class="testimonial-card active">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p>"Super fast delivery! Got my groceries in 8 minutes. Great quality products at good prices."</p>
+        <h4>Priya Sharma</h4>
+        <p class="location">Chennai</p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p>"Best grocery app I've used. Products are fresh and delivery is incredibly fast. Highly recommended!"</p>
+        <h4>Rajesh Kumar</h4>
+        <p class="location">Tiruvallur</p>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p>"Love the convenience and speed. The app is very user-friendly and prices are competitive."</p>
+        <h4>Anjali Singh</h4>
+        <p class="location">Kancheepuram</p>
+      </div>
+    </div>
+
+    <!-- Dots navigation -->
+    <div class="testimonial-dots">
+      <button class="dot active" data-index="0"></button>
+      <button class="dot" data-index="1"></button>
+      <button class="dot" data-index="2"></button>
+    </div>
+  </div>
+</section>
     </main>
+
+    <script>
+  const track = document.querySelector('.testimonial-track');
+  const dots = document.querySelectorAll('.testimonial-dots .dot');
+  const totalSlides = dots.length;
+
+  function goToSlide(index) {
+    // Move track
+    track.style.transform = `translateX(-${index * 100}%)`;
+
+    // Update active dot
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[index].classList.add('active');
+  }
+
+  // Click handlers for dots
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const index = parseInt(dot.getAttribute('data-index'));
+      goToSlide(index);
+    });
+  });
+
+  // Optional: auto-slide every 5s
+  let current = 0;
+  setInterval(() => {
+    current = (current + 1) % totalSlides;
+    goToSlide(current);
+  }, 5000);
+</script>
 </body>
 </html>
