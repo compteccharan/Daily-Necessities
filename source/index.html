@@ -23,22 +23,50 @@
           
        .header-top-portion{
             border:none;
-            height:50px;
+            height:47px;
             display:flex;
-            justify-content:space-between;
+            column-gap: 30px;
+            max-width: 1380px;
+
         }
 
        .logo{
           width:280px;
           height: 60px;
           text-align:center;
-          padding-top:13px; 
+          margin-top:13px; 
           display:flex;
           justify-content: center;
           align-items: center;
         }
 
+       select{
+         padding-top:7px;
+         padding-bottom: 7px;
+         padding-left:8px;
+         margin-top:10px;
+         margin-left:-30px;
+         border: 1px solid rgb(153, 152, 152);
+         border-radius: 30px;
+         font-family: Rubik,sans-serif;
+         font-size: 13px;
+         cursor:pointer;
+         font-weight: 500;
+         outline:none;   
+         transition:border 0.25s,background-color 0.25s,color 0.25s;
+       }   
        
+       select:hover{
+        border:1px solid rgb(29, 155, 29) ;
+        background-color:rgb(29, 155, 29);
+        color:white;
+       }
+
+       option{
+         padding-right: 10px;
+         font-family: Rubik,sans-serif;
+         font-weight:500;
+       } 
 
        .search-bar{
           border:1px solid rgb(153, 152, 152);
@@ -52,6 +80,7 @@
           align-items: center;
           box-sizing: border-box;
           background-color: white;
+          margin-right:-35px;
        }
 
        .search-box{
@@ -126,9 +155,52 @@
         align-items: center;
      }
 
+     .login-cart{
+      display:flex;
+      width:270px;
+      column-gap:14px;
+      justify-content:flex-start;
+      align-items: center;
+      margin-bottom:11px;
+      margin-left:20px;
+     }
+
+     .login-cart button {
+      display:flex;
+      align-items: center;
+      column-gap: 6px;
+      padding: 6px 15px;
+      background-color: white;
+      border:none;
+      cursor:pointer;
+      transition: background-color 0.2s,border-radius 0.2s;
+     }
+
+     .login-cart button:hover{
+      background-color:rgba(218, 216, 216, 0.5);
+      border-radius: 30px;
+     }
+
+     .login-cart button a{
+      font-size: 16px;
+      text-decoration: none;
+      color:black;
+      font-family: Rubik,sans-serif;
+      cursor:pointer;
+     }
+
+     .cart-button{
+      padding-left:3px;
+      padding-right:3px;
+      padding-bottom:5px;
+      margin-left:-5px;
+     }
+
     </style>
 
-    </head><body><header>
+    </head>
+    <body>
+      <header>
             <nav class="Home-page-header">
                 <div class="header-top-portion">
                     <div class="logo"><svg viewbox = "0 0 1280 1280" version="1.1" xmlns="http://www.w3.org/2000/svg" width="200" height="172">
@@ -262,6 +334,24 @@
                         <path d="" fill="#FFFFFF" transform="translate(0,0)"></path>
                         <path d="" fill="#FFFF00" transform="translate(0,0)"></path> </svg>
                     </div>
+
+                    <div class="location-button">
+                      <form>
+                        <select>
+                          <option>Select Location</option>
+                          <option>Chennai</option>
+                          <option>Avadi</option>
+                          <option>Ambathur</option>
+                          <option>Anna Nagar</option>
+                          <option>Mogappair</option>
+                          <option>Sri Perumbudhur</option>
+                          <option>Tiruvallur</option>
+                          <option>Tiruthani</option>
+                          <option>Arakonam</option>
+                        </select>
+                      </form>
+                    </div>
+
                     <div class="search-bar">
                      <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path fill="rgb(131, 126, 126)" d="M480 272C480 317.9 465.1 360.3 440 394.7L566.6 521.4C579.1 533.9 579.1 554.2 566.6 566.7C554.1 579.2 533.8 579.2 
                         521.3 566.7L394.7 440C360.3 465.1 317.9 480 272 480C157.1 480 64 386.9 64 272C64 157.1 157.1 64 272 64C386.9 64 480 
@@ -269,7 +359,16 @@
                         192.5 416 272 416z"></path>
                     </svg>
                      <input class="search-box" type="text" placeholder="Search your Essentials"> </div> 
-                    <div class="login-cart" style="background-color: rgb(0, 4, 255);color:white;">Login-Cart Portion</div>
+                    <div class="login-cart">
+                      <button class="login-button">
+                        <svg fill="none" height="24" viewBox="0 0 26 26" width="24" xmlns="http://www.w3.org/2000/svg"><circle cx="12.5" cy="11.168" r="3.5" stroke="#000000" stroke-linecap="round" stroke-width="1.6"></circle><circle cx="12.5" cy="13.5" r="10.5" stroke="#000000" stroke-width="1.6"></circle><path d="M19.5 21.3236C19.0871 20.0832 18.1773 18.9872 16.9117 18.2054C15.646 17.4237 14.0953 17 12.5 17C10.9047 17 9.35398 17.4237 8.08835 18.2054C6.82271 18.9872 5.91289 20.0832 5.5 21.3236" stroke="#000000" stroke-linecap="round" stroke-width="1.6"></path></svg>
+                        <a href="/source/Sign-Up.html">Login</a>
+                     </button>
+                      <button class="cart-button">
+                        <svg style="padding-top:2px;" color="#000000" fill="none" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg"> <path d="M10.5586 22C11.387 22 12.0586 21.317 12.0586 20.4746C12.0586 19.6321 11.387 18.9492 10.5586 18.9492C9.73017 18.9492 9.05859 19.6321 9.05859 20.4746C9.05859 21.317 9.73017 22 10.5586 22Z" fill="#000000"></path><path d="M17.6177 22C18.4461 22 19.1177 21.317 19.1177 20.4746C19.1177 19.6321 18.4461 18.9492 17.6177 18.9492C16.7892 18.9492 16.1177 19.6321 16.1177 20.4746C16.1177 21.317 16.7892 22 17.6177 22Z" fill="#000000"></path><path d="M2 2.06277C3.76471 2.0629 4.94118 1.4978 6.11765 3.75768M6.11765 3.75768H19.2461C20.6051 3.75768 21.5684 5.0841 21.1479 6.37649L19.5082 11.416C19.2402 12.2397 18.4725 12.7972 17.6064 12.7972H9.05882M6.11765 3.75768L9.05882 12.7972M20.8235 16.752H9.27151C8.17943 16.752 7.29412 15.8667 7.29412 14.7746V14.5619C7.29412 13.5873 8.0842 12.7972 9.05882 12.7972V12.7972" stroke="#000000" stroke-linecap="round" stroke-width="1.8"></path></svg>
+                        <a href="#home"> Cart</a>
+                     </button>
+                    </div>
                 </div> 
             </nav>
           
