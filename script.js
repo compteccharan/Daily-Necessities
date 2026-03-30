@@ -1,0 +1,122 @@
+/* ============================================
+   VERDAIL - Simple JavaScript
+   This code does 3 things:
+   1. Hides loading screen after page loads
+   2. Makes testimonial slider work
+   3. Shows cart popup when ADD button clicked
+   ============================================ */
+
+// ============================================
+// 1. LOADING SCREEN
+// Wait for page to fully load, then hide loader
+// ============================================
+
+window.addEventListener('load', function() {
+    
+    // Wait 2 seconds so user can see the animation
+    setTimeout(function() {
+        
+        // Find the loading screen element
+        var loadingScreen = document.getElementById('loading-screen');
+        
+        // Find the main content element
+        var mainContent = document.getElementById('main-content');
+        
+        // Add 'hidden' class to fade out loader
+        loadingScreen.classList.add('hidden');
+        
+        // Add 'visible' class to fade in content
+        mainContent.classList.add('visible');
+        
+    }, 2000);
+    
+});
+
+
+// ============================================
+// 2. TESTIMONIAL SLIDER
+// Shows one review at a time, dots to navigate
+// ============================================
+
+var currentSlide = 0;
+var totalSlides = 3;
+
+// Function to go to a specific slide
+function goToSlide(slideNumber) {
+    currentSlide = slideNumber;
+    var track = document.querySelector('.testimonial-track');
+    track.style.transform = 'translateX(-' + (slideNumber * 100) + '%)';
+    updateDots();
+}
+
+// Function to update dot styles
+function updateDots() {
+    var dots = document.querySelectorAll('.testimonial-dots .dot');
+    for (var i = 0; i < dots.length; i++) {
+        if (i === currentSlide) {
+            dots[i].classList.add('active');
+        } else {
+            dots[i].classList.remove('active');
+        }
+    }
+}
+
+// ============================================
+// 3. DOT CLICK - When user clicks a dot
+// ============================================
+
+window.addEventListener('load', function() {
+    var dots = document.querySelectorAll('.testimonial-dots .dot');
+    for (var i = 0; i < dots.length; i++) {
+        dots[i].addEventListener('click', function() {
+            var index = parseInt(this.getAttribute('data-index'));
+            goToSlide(index);
+        });
+    }
+});
+
+// Auto-slide every 5 seconds
+setInterval(function() {
+    var nextSlide = currentSlide + 1;
+    if (nextSlide >= totalSlides) {
+        nextSlide = 0;
+    }
+    goToSlide(nextSlide);
+}, 5000);
+
+
+// ============================================
+// 4. CART POPUP - Shows when ADD button clicked
+// ============================================
+
+window.addEventListener('load', function() {
+    
+    // Find all ADD buttons
+    var addButtons = document.querySelectorAll('.add-button');
+    
+    // Find the popup
+    var popup = document.getElementById('cart-popup');
+    
+    // Find the close button
+    var closeBtn = document.querySelector('.close-popup');
+    
+    // When any ADD button is clicked, show popup
+    for (var i = 0; i < addButtons.length; i++) {
+        addButtons[i].addEventListener('click', function() {
+            popup.classList.remove('hidden');
+        });
+    }
+    
+    // When close button clicked, hide popup
+    closeBtn.addEventListener('click', function() {
+        popup.classList.add('hidden');
+    });
+    
+    // When clicking outside popup content, close it
+    popup.addEventListener('click', function(event) {
+        if (event.target === popup) {
+            popup.classList.add('hidden');
+        }
+    });
+    
+});
