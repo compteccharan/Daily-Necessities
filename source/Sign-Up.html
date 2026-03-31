@@ -24,12 +24,12 @@
                     <input type="email" placeholder="Email">
                     <input type="password" placeholder="Password">
                     <a href="#" class="forgot-password">Forgot Password?</a>
-                    <button class="signin-button" type="submit"><p style="margin:0px;margin-left:-9px;">Sign In</p></button>
+                    <button class="signin-button" type="button" onclick="window.location.href='../index.html'"><p style="margin:0px;margin-left:-9px;">Sign In</p></button>
                 </form>
 
                 <div class="sign-in-portion" >
                   <h5 class="connect_media">or Connect with other social media</h5>
-                    <button type="button" class="google_button">
+                    <button type="button" class="google_button" onclick="window.location.href='../index.html'">
                         <p class="google_button-text">Sign in with Google</p>
                         <img class="google_img" src="/assets/google icon.svg">
                     </button>
@@ -41,5 +41,12 @@
             </div>
         </div>
     </div>
+    <script>
+     document.querySelector('.signin-button' ).addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent form submission
+        alert('Sign In button clicked!');
+        
+        });
+    </script>
 </body>
 </html>
