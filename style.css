@@ -393,7 +393,7 @@ header.header-hidden {
      }
 
      .login-cart button:hover{
-      background-color:rgba(218, 216, 216, 0.5);
+      background-color: rgba(46, 125, 50, 0.3);  /* dark green with opacity */
       border-radius: 30px;
      }
 
