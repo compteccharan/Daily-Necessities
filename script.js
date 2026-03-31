@@ -107,6 +107,14 @@ window.addEventListener('load', function() {
         });
     }
     
+    // When cart button is clicked, show popup
+    var cartButton = document.querySelector('.cart-button');
+    if (cartButton) {
+        cartButton.addEventListener('click', function() {
+            popup.classList.remove('hidden');
+        });
+    }
+    
     // When close button clicked, hide popup
     closeBtn.addEventListener('click', function() {
         popup.classList.add('hidden');
@@ -119,4 +127,27 @@ window.addEventListener('load', function() {
         }
     });
     
+});
+
+
+// ============================================
+// 5. STICKY HEADER - Hide when testimonials visible
+// ============================================
+
+window.addEventListener('load', function() {
+    var header = document.querySelector('header');
+    var testimonials = document.querySelector('.testimonials');
+    
+    if (!header || !testimonials) return;
+    
+    window.addEventListener('scroll', function() {
+        var testimonialsRect = testimonials.getBoundingClientRect();
+        
+        // Hide header when testimonials section enters viewport
+        if (testimonialsRect.top < window.innerHeight && testimonialsRect.bottom > 0) {
+            header.classList.add('header-hidden');
+        } else {
+            header.classList.remove('header-hidden');
+        }
+    });
 });
