@@ -26,9 +26,8 @@
         .cart-header h1 {
             font-size: 36px;
             font-weight: 700;
-            background: linear-gradient(135deg, #2e7d32 0%, #4CAF50 100%);
+            color:white;
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             background-clip: text;
             margin: 0;
             font-family: 'Rubik', sans-serif;
@@ -407,11 +406,20 @@
                 console.log('Cart items:', cartItems);
 
                 const cartItemsList = document.getElementById('cart-items-list');
-                const emptyMessage = document.getElementById('empty-cart-message');
 
                 if (cartItems.length === 0) {
-                    cartItemsList.innerHTML = '';
-                    cartItemsList.appendChild(emptyMessage);
+                    cartItemsList.innerHTML = `
+                        <div class="empty-cart">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                            <p>Your cart is empty</p>
+                            <p style="font-size: 14px; margin-bottom: 20px;">Add some items to get started!</p>
+                            <a href="index.html">Continue Shopping</a>
+                        </div>
+                    `;
                 } else {
                     cartItemsList.innerHTML = '';
                     cartItems.forEach(item => {
