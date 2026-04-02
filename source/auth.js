@@ -76,7 +76,7 @@ export async function signUpWithGoogle() {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: window.location.origin + '/index.html',
+        redirectTo: window.location.origin,
       },
     })
 
@@ -95,7 +95,7 @@ export async function signInWithGoogle() {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: window.location.origin + '/index.html',
+        redirectTo: window.location.origin,
       },
     })
 
@@ -117,7 +117,7 @@ export async function logout() {
     if (error) throw new Error(error.message)
 
     // Redirect to login
-    window.location.href = 'source/Login.html'
+    window.location.href = './source/Login.html'
   } catch (error) {
     throw new Error(error.message || 'Logout failed')
   }

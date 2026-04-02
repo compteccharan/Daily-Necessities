@@ -173,7 +173,7 @@ CREATE POLICY "Users can update own cart items" ON carts
 
 CREATE POLICY "Users can delete from own cart" ON carts
   FOR DELETE USING (auth.uid() = user_id);
-
+///
 -- Wishlist: Users can only access their own wishlist
 CREATE POLICY "Users can view own wishlist" ON wishlist
   FOR SELECT USING (auth.uid() = user_id);
