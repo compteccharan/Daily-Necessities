@@ -5,7 +5,7 @@ import { getCurrentUser } from './auth.js'
 // CART OPERATIONS
 // ========================================
 
-export async function addToCart(productId, productName, quantity = 1, price = 0) {
+export async function addToCart(productId, productName, quantity = 1, price = 0, productImage = '') {
   try {
     const user = await getCurrentUser()
     if (!user) throw new Error('User not authenticated')
@@ -18,6 +18,7 @@ export async function addToCart(productId, productName, quantity = 1, price = 0)
         product_name: productName,
         quantity,
         price_at_add: price,
+        product_image: productImage || '',
       })
 
     if (error) throw new Error(error.message)

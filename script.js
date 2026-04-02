@@ -144,6 +144,7 @@ window.addEventListener('load', async function() {
 
                     const productNameEl = productCard.querySelector('.product-name');
                     const priceElement = productCard.querySelector('.current-price');
+                    const imageElement = productCard.querySelector('.product-image');
 
                     if (!productNameEl || !priceElement) {
                         console.error('Missing product details. Name:', productNameEl, 'Price:', priceElement);
@@ -155,11 +156,13 @@ window.addEventListener('load', async function() {
                     const priceText = priceElement.textContent.trim().replace('₹', '').trim();
                     const price = parseFloat(priceText);
                     const productId = productCard.getAttribute('data-product-id') || productName;
+                    const productImage = imageElement ? imageElement.src : './assets/placeholder.png';
 
                     console.log('Adding to cart:', {
                         productId,
                         productName,
                         price,
+                        productImage,
                         quantity: 1
                     });
 
@@ -170,7 +173,7 @@ window.addEventListener('load', async function() {
                     }
 
                     try {
-                        await addToCart(productId, productName, 1, price);
+                        await addToCart(productId, productName, 1, price, productImage);
                         console.log('Successfully added to cart');
                         alert('✓ Added to cart!');
                         
