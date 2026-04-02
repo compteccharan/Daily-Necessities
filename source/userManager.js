@@ -1,9 +1,6 @@
 import { supabase } from './supabaseClient.js'
 import { getCurrentUser } from './auth.js'
 
-import { supabase } from './supabaseClient.js'
-import { getCurrentUser } from './auth.js'
-
 // ========================================
 // CART OPERATIONS
 // ========================================

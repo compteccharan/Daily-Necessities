@@ -1429,37 +1429,122 @@
 
     <script type="module">
         import { getCurrentUser, logout } from './source/auth.js';
-        import { getCart } from './source/userManager.js';
+        import { supabase } from './source/supabaseClient.js';
 
-        // Check if user is logged in on page load
-        window.addEventListener('load', async () => {
-            const user = await getCurrentUser();
-
-            if (user) {
-                // User is logged in
-                console.log('Logged in as:', user.email);
-
-                // Show user email in header (optional)
-                const headerUserInfo = document.querySelector('.header-user-info');
-                if (headerUserInfo) {
-                    headerUserInfo.textContent = user.email;
+        // ========== AUTO-GENERATE PRODUCT IDs ==========
+        // Assign unique IDs to product cards if not already assigned
+        document.addEventListener('DOMContentLoaded', function() {
+            const productCards = document.querySelectorAll('.product-card');
+            productCards.forEach((card, index) => {
+                if (!card.getAttribute('data-product-id')) {
+                    const productName = card.querySelector('.product-name');
+                    if (productName) {
+                        const id = productName.textContent.trim().replace(/\s+/g, '-').toLowerCase();
+                        card.setAttribute('data-product-id', id + '-' + index);
+                    } else {
+                        card.setAttribute('data-product-id', 'product-' + index);
+                    }
                 }
+            });
+            console.log('Product IDs assigned to', productCards.length, 'cards');
+        });
 
-                // Enable cart button
-                const cartButton = document.querySelector('.cart-button');
-                if (cartButton) {
-                    cartButton.style.display = 'block';
-                }
+        // ========== AUTHENTICATION STATE MANAGEMENT ==========
+        // Listen for auth state changes (works for all login methods including Google OAuth)
+        let currentUser = null;
+
+        supabase.auth.onAuthStateChange((event, session) => {
+            console.log('Auth state changed:', event, 'Session:', session ? 'exists' : 'null');
+            
+            if (session && session.user) {
+                currentUser = session.user;
+                console.log('✓ User authenticated:', currentUser.email);
+                updateUIForLoggedInUser(currentUser);
+                // Update cart count when auth state changes
+                setTimeout(() => {
+                    updateCartCount();
+                }, 100);
             } else {
-                // User is not logged in - show cart popup instead
-                console.log('User not logged in');
+                currentUser = null;
+                console.log('✗ User not authenticated');
+                updateUIForLoggedOutUser();
             }
         });
 
-        // Add logout button listener if you have a logout button
+        function updateUIForLoggedInUser(user) {
+            // Show user email in header
+            const headerUserInfo = document.querySelector('.header-user-info');
+            if (headerUserInfo) {
+                headerUserInfo.textContent = user.email;
+                headerUserInfo.style.display = 'block';
+            }
+
+            // Show/enable cart button
+            const cartButton = document.querySelector('.cart-button');
+            if (cartButton) {
+                cartButton.style.display = 'block';
+                cartButton.style.opacity = '1';
+                cartButton.style.pointerEvents = 'auto';
+                console.log('Cart button enabled');
+            }
+
+            // Hide signup popup if showing
+            const popup = document.getElementById('cart-popup');
+            if (popup && !popup.classList.contains('hidden')) {
+                popup.classList.add('hidden');
+            }
+        }
+
+        function updateUIForLoggedOutUser() {
+            // Hide user email
+            const headerUserInfo = document.querySelector('.header-user-info');
+            if (headerUserInfo) {
+                headerUserInfo.textContent = '';
+                headerUserInfo.style.display = 'none';
+            }
+
+            // Disable/hide cart button
+            const cartButton = document.querySelector('.cart-button');
+            if (cartButton) {
+                cartButton.style.display = 'none';
+                cartButton.style.opacity = '0.5';
+                cartButton.style.pointerEvents = 'none';
+            }
+        }
+
+        // Check initial auth state on page load
+        window.addEventListener('load', async () => {
+            console.log('Page load event fired');
+            
+            try {
+                const { data: { user } } = await supabase.auth.getUser();
+                
+                if (user) {
+                    console.log('✓ User found at page load:', user.email);
+                    currentUser = user;
+                    updateUIForLoggedInUser(user);
+                } else {
+                    console.log('✗ No user logged in at page load');
+                    updateUIForLoggedOutUser();
+                }
+            } catch (error) {
+                console.error('Error checking auth status:', error);
+                updateUIForLoggedOutUser();
+            }
+        });
+
+        // Add logout button listener
         const logoutBtn = document.querySelector('.logout-btn');
         if (logoutBtn) {
-            logoutBtn.addEventListener('click', logout);
+            logoutBtn.addEventListener('click', async () => {
+                try {
+                    await logout();
+                    currentUser = null;
+                    updateUIForLoggedOutUser();
+                } catch (error) {
+                    console.error('Logout error:', error);
+                }
+            });
         }
     </script>
 
