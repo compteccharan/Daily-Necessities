@@ -117,7 +117,7 @@ export async function logout() {
     if (error) throw new Error(error.message)
 
     // Redirect to login
-    window.location.href = '/source/Login.html'
+    window.location.href = 'source/Login.html'
   } catch (error) {
     throw new Error(error.message || 'Logout failed')
   }
