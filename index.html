@@ -180,20 +180,9 @@
                     </div>
 
                     <div class="location-button">
-                      <form>
-                        <select>
-                          <option>Select Location</option>
-                          <option>Chennai</option>
-                          <option>Avadi</option>
-                          <option>Ambathur</option>
-                          <option>Anna Nagar</option>
-                          <option>Mogappair</option>
-                          <option>Sri Perumbudhur</option>
-                          <option>Tiruvallur</option>
-                          <option>Tiruthani</option>
-                          <option>Arakonam</option>
-                        </select>
-                      </form>
+                      <button id="location-display" style="background: linear-gradient(135deg, #e8f5e9 0%, #f5f5f5 100%); padding-top: 7px; padding-bottom: 7px; padding-left: 8px; padding-right: 12px; margin-top: 10px; margin-left: -30px; border: 1px solid rgb(153, 152, 152); border-radius: 30px; font-family: Rubik, sans-serif; font-size: 13px; cursor: pointer; font-weight: 500; outline: none; transition: border 0.25s, background-color 0.25s, color 0.25s; display: flex; align-items: center; gap: 6px; user-select: none;white-space:nowrap;flex-wrap:nowrap;">
+                        <span id="city-name">Fetching location...</span>
+                      </button>
                     </div>
 
                     <div class="search-bar">
@@ -1430,6 +1419,140 @@
     <script type="module">
         import { getCurrentUser, logout } from './source/auth.js';
         import { supabase } from './source/supabaseClient.js';
+
+        // ========== GEOLOCATION AND CITY FETCHING ==========
+        async function fetchUserLocation() {
+            const cityNameElement = document.getElementById('city-name');
+            const locationDisplay = document.getElementById('location-display');
+            
+            try {
+                // First, try to use browser's Geolocation API
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        async (position) => {
+                            const { latitude, longitude } = position.coords;
+                            console.log('Geolocation obtained:', latitude, longitude);
+                            try {
+                                // Use reverse geocoding API to get city name
+                                const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`);
+                                const data = await response.json();
+                                
+                                // Extract city name from response
+                                let cityName = data.address?.city || data.address?.town || data.address?.village || data.address?.county || 'Unknown Location';
+                                
+                                console.log('City fetched:', cityName);
+                                cityNameElement.textContent = cityName;
+                                localStorage.setItem('userCity', cityName);
+                                localStorage.setItem('userLocation', JSON.stringify({latitude, longitude, city: cityName}));
+                            } catch (error) {
+                                console.error('Error fetching city from coordinates:', error);
+                                // Fallback to IP-based geolocation
+                                await fetchLocationByIP();
+                            }
+                        },
+                        (error) => {
+                            console.warn('Geolocation permission denied or error:', error);
+                            if (error.code === 1) {
+                                // Permission denied
+                                showPermissionButton();
+                            } else {
+                                // Other errors - fall back to IP-based geolocation
+                                fetchLocationByIP();
+                            }
+                        }
+                    );
+                } else {
+                    // Browser doesn't support Geolocation API, use IP-based
+                    await fetchLocationByIP();
+                }
+            } catch (error) {
+                console.error('Error in fetchUserLocation:', error);
+                cityNameElement.textContent = 'Location unavailable';
+            }
+        }
+
+        function showPermissionButton() {
+            const locationDisplay = document.getElementById('location-display');
+            const cityNameElement = document.getElementById('city-name');
+            
+            cityNameElement.textContent = 'Give Permission';
+            locationDisplay.style.backgroundColor = '#ffebee';
+            locationDisplay.style.borderColor = '#ef5350';
+            
+            // Add one-time click handler to request permission
+            const requestHandler = () => {
+                // Show alert about blocked location access
+                alert('📍 Location Access Blocked\n\nYour location access is disabled. To enable it:\n\n' +
+                      '1. Click the location icon (🔒) in the address bar\n' +
+                      '2. Select "Site Settings" or "Permissions"\n' +
+                      '3. Find "Location" and change it to "Allow"\n' +
+                      '4. Refresh the page\n\n' +
+                      'Alternatively, you can allow access in your browser settings.');
+                
+                // After alert, attempt to request permission again
+                cityNameElement.textContent = 'Retrying...';
+                locationDisplay.style.backgroundColor = 'linear-gradient(135deg, #e8f5e9 0%, #f5f5f5 100%)';
+                locationDisplay.style.borderColor = 'rgb(153, 152, 152)';
+                locationDisplay.removeEventListener('click', requestHandler);
+                fetchUserLocation();
+            };
+            
+            locationDisplay.onclick = requestHandler;
+        }
+
+        async function fetchLocationByIP() {
+            const cityNameElement = document.getElementById('city-name');
+            try {
+                // Use IP-based geolocation API (no apikey needed for basic requests)
+                const response = await fetch('https://ipapi.co/json/');
+                const data = await response.json();
+                
+                let cityName = data.city || data.region_code || 'Unknown Location';
+                console.log('City fetched from IP:', cityName);
+                cityNameElement.textContent = cityName;
+                localStorage.setItem('userCity', cityName);
+                localStorage.setItem('userLocation', JSON.stringify(data));
+            } catch (error) {
+                console.error('Error fetching location from IP:', error);
+                cityNameElement.textContent = 'Chennai'; // Default fallback
+            }
+        }
+
+        // Fetch location when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchUserLocation();
+            
+            // Allow user to refresh location by clicking on it
+            const locationDisplay = document.getElementById('location-display');
+            if (locationDisplay) {
+                locationDisplay.addEventListener('click', function(e) {
+                    // Only refresh if not already showing permission request
+                    if (!document.getElementById('city-name').textContent.includes('Give Permission')) {
+                        document.getElementById('city-name').textContent = 'Refreshing...';
+                        fetchUserLocation();
+                    }
+                });
+                
+                // Add hover effects matching select styling
+                locationDisplay.addEventListener('mouseenter', () => {
+                    // Only apply hover if not showing permission button
+                    if (!document.getElementById('city-name').textContent.includes('Give Permission')) {
+                        locationDisplay.style.border = '1px solid rgb(29, 155, 29)';
+                        locationDisplay.style.backgroundColor = 'rgb(29, 155, 29)';
+                        locationDisplay.style.color = 'rgb(6, 92, 23)';
+                    }
+                });
+                
+                locationDisplay.addEventListener('mouseleave', () => {
+                    // Reset style only if not showing permission button
+                    if (!document.getElementById('city-name').textContent.includes('Give Permission')) {
+                        locationDisplay.style.border = '1px solid rgb(153, 152, 152)';
+                        locationDisplay.style.background = 'linear-gradient(135deg, #e8f5e9 0%, #f5f5f5 100%)';
+                        locationDisplay.style.color = 'inherit';
+                    }
+                });
+            }
+        });
 
         // ========== AUTO-GENERATE PRODUCT IDs ==========
         // Assign unique IDs to product cards if not already assigned
