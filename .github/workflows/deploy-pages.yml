@@ -28,6 +28,18 @@ jobs:
         with:
           lfs: true
 
+      - name: Pull Git LFS assets
+        run: |
+          git lfs install --local
+          git lfs pull
+
+      - name: Verify no LFS pointer files in image folders
+        run: |
+          if grep -RIl "https://git-lfs.github.com/spec/v1" product-images new-product-images 2>/dev/null; then
+            echo "LFS pointer files detected in image folders. Failing build to prevent broken images on Pages."
+            exit 1
+          fi
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
