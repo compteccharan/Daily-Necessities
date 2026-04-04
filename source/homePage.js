@@ -1,5 +1,6 @@
 import { assignProductIds } from './catalog.js'
 import { ensureUserProfile, getCurrentUser, getLoginUrl, logout, onAuthStateChange, restoreSession } from './auth.js'
+import { imageSrc } from './pageHelpers.js'
 import { addToCart, getCart, getCartCount, removeFromCart, updateCartQuantity } from './userManager.js'
 
 let currentUser = null
@@ -222,7 +223,7 @@ function buildProductCardMarkup(product) {
 
   return `
     <div class="product-image-container">
-      <img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}" class="product-image">
+      <img src="${imageSrc(product.image)}" alt="${escapeHtml(product.name)}" class="product-image">
       <button class="add-button">ADD</button>
     </div>
     <div class="product-details">
@@ -253,7 +254,7 @@ function bindLogoHome() {
 
   logo.style.cursor = 'pointer'
   logo.addEventListener('click', () => {
-    window.location.href = 'index.html'
+    window.location.href = '/Daily-Necessities/index.html'
   })
 }
 
@@ -790,7 +791,7 @@ function renderPreviewItemImage(item) {
     return '<div class="cart-preview-image" aria-hidden="true"></div>'
   }
 
-  return `<img class="cart-preview-image" src="${escapeHtml(image)}" alt="${escapeHtml(name)}">`
+  return `<img class="cart-preview-image" src="${imageSrc(image)}" alt="${escapeHtml(name)}">`
 }
 
 function setPreviewCopy({ title = 'Your Cart', message, temporary = false } = {}) {
@@ -972,7 +973,7 @@ function showUserMenu(event) {
     <div style="padding: 12px 16px; border-bottom: 1px solid #eee; font-size: 12px; color: #666;">
       Signed in as<br><strong style="color: #333;">${currentUser?.email || 'User'}</strong>
     </div>
-    <a id="menu-orders" href="orders.html" style="display: block; width: 100%; box-sizing: border-box; padding: 12px 16px; border-bottom: 1px solid #eee; background: none; text-align: left; cursor: pointer; font-size: 14px; color: #333; text-decoration: none;">My Orders</a>
+    <a id="menu-orders" href="/Daily-Necessities/orders.html" style="display: block; width: 100%; box-sizing: border-box; padding: 12px 16px; border-bottom: 1px solid #eee; background: none; text-align: left; cursor: pointer; font-size: 14px; color: #333; text-decoration: none;">My Orders</a>
     <button id="menu-logout" style="width: 100%; padding: 12px 16px; border: none; background: none; text-align: left; cursor: pointer; font-size: 14px; color: #d32f2f;">Sign Out</button>
   `
   menu.style.cssText = `

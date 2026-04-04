@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Verdail - Your Farm-Fresh Daily Essentials">
     <title>Verdail - Sign In</title>
+    <base href="/Daily-Necessities/source/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="/Daily-Necessities/source/styles/login.css">
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 
@@ -15,7 +16,7 @@
     <div class="background"></div>
     <div class="page-layout">
         <div class="brand-panel">
-            <img class="brand-image" src="../assets/VERDAIL_ENTRY.png" alt="Verdail Online Shop">
+            <img class="brand-image" src="/Daily-Necessities/assets/VERDAIL_ENTRY.png" alt="Verdail Online Shop">
         </div>
         <div class="sign-in-wrapper">
             <h1 class="sign-in-heading">Sign In</h1>
@@ -32,10 +33,10 @@
                   <h5 class="connect_media">or Connect with other social media</h5>
                     <button type="button" class="google_button" id="google-signin-btn">
                         <p class="google_button-text">Sign in with Google</p>
-                        <img class="google_img" src="../assets/google icon.svg">
+                        <img class="google_img" src="/Daily-Necessities/assets/google icon.svg">
                     </button>
                     <span style="margin-left:16px;line-height:32px;">
-                        <p class="new-customer">New Customer? <a href="SignUp.html" class="sign-up" style="text-decoration: none; color: inherit;">Sign Up</a></p>
+                        <p class="new-customer">New Customer? <a href="/Daily-Necessities/source/SignUp.html" class="sign-up" style="text-decoration: none; color: inherit;">Sign Up</a></p>
                         <pre class="terms-conditions" style="line-height:18px;">By continuing, you agree to Verdail's <br> <u class="conditions">Conditions of Use</u> and <u class="policy">Privacy Policy</u></pre>
                     </span>
                 </div>
@@ -55,7 +56,7 @@
             await restoreSession();
             const existingUser = await getCurrentUser();
             if (existingUser) {
-                window.location.href = '../index.html';
+                window.location.href = '/Daily-Necessities/index.html';
             }
         })();
 
@@ -82,7 +83,7 @@
                 if (data && data.user) {
                     await ensureUserProfile(data.user);
                 }
-                window.location.href = '../index.html';
+                window.location.href = '/Daily-Necessities/index.html';
             } catch (error) {
                 showError(error.message);
             }

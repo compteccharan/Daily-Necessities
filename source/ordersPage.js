@@ -45,7 +45,7 @@ function renderOrders(orders) {
               <h2>Order ${escapeHtml(order.id)}</h2>
               <p>Placed ${formatDateLabel(order.placed_at)}</p>
             </div>
-            <a class="receipt-link" href="order-confirmation.html?order=${order.id}">View Receipt</a>
+            <a class="receipt-link" href="/Daily-Necessities/order-confirmation.html?order=${order.id}">View Receipt</a>
           </div>
           <div class="order-meta-grid">
             <div><span class="meta-label">ETA</span><span>${formatDateLabel(order.estimated_delivery_at)}</span></div>

@@ -25,7 +25,7 @@ async function initCheckoutPage() {
 
     if (cartItems.length === 0) {
       alert('No items in cart')
-      window.location.href = 'cart.html'
+      window.location.href = '/Daily-Necessities/cart.html'
       return
     }
 
@@ -168,7 +168,7 @@ async function placeOrder(event) {
     sessionStorage.removeItem('cartItems')
     sessionStorage.removeItem('cartTotal')
 
-    window.location.href = `order-confirmation.html?order=${order.id}`
+    window.location.href = `/Daily-Necessities/order-confirmation.html?order=${order.id}`
   } catch (error) {
     showError(error.message || 'Unable to place order')
     button.disabled = false
@@ -188,5 +188,5 @@ function hideMessages() {
 }
 
 window.goBackToCart = function goBackToCart() {
-  window.location.href = 'cart.html'
+  window.location.href = '/Daily-Necessities/cart.html'
 }

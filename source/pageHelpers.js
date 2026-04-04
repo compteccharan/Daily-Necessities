@@ -58,5 +58,7 @@ export function escapeHtml(value) {
 
 export function imageSrc(path) {
   if (!path) return ''
-  return path.startsWith('http') ? path : `./${path.replace(/^\.?\//, '')}`
+  if (path.startsWith('http')) return path
+  if (path.startsWith('/Daily-Necessities/')) return path
+  return `/Daily-Necessities/${path.replace(/^\.?\//, '')}`
 }

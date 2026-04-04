@@ -45,7 +45,7 @@ export function assignProductIds(root = document) {
 }
 
 async function fetchCatalogDocument() {
-  const response = await fetch('./index.html', { cache: 'no-store' })
+  const response = await fetch('/Daily-Necessities/index.html', { cache: 'no-store' })
   if (!response.ok) {
     throw new Error('Unable to load product catalog')
   }

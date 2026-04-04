@@ -160,5 +160,5 @@ window.proceedToCheckout = function proceedToCheckout() {
 
   sessionStorage.setItem('cartItems', JSON.stringify(cartItems))
   sessionStorage.setItem('cartTotal', String(calculateCartTotals(cartItems).total))
-  window.location.href = 'checkout.html'
+  window.location.href = '/Daily-Necessities/checkout.html'
 }

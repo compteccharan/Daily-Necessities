@@ -21,18 +21,18 @@ async function initConfirmationPage() {
     if (orderId && (!order || order.id !== orderId)) {
       order = await getOrderById(orderId)
     } else if (order?.id) {
-      orderId && history.replaceState({}, document.title, `order-confirmation.html?order=${order.id}`)
+      orderId && history.replaceState({}, document.title, `/Daily-Necessities/order-confirmation.html?order=${order.id}`)
     }
 
     if (!order?.id) {
-      window.location.href = 'index.html'
+      window.location.href = '/Daily-Necessities/index.html'
       return
     }
 
     renderOrder(order)
   } catch (error) {
     console.error('Unable to load order confirmation:', error.message)
-    window.location.href = 'index.html'
+    window.location.href = '/Daily-Necessities/index.html'
   }
 }
 
