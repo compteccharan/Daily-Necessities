@@ -32,10 +32,122 @@ const categoryToSections = {
   cosmetics: ['Personal Care & Beauty', 'Hair Care'],
   sanitary: ['Cleaning Supplies'],
   beverages: ['Beverages'],
-  medpharm: ['Personal Care & Beauty'],
+  medpharm: ['MedPharm'],
+}
+
+const NEW_PRODUCTS_BY_SECTION = {
+  'Rice & Dals': [
+    { name: '24 Mantra Organic Peanuts', price: 179, originalPrice: 220, quantity: '1 pack (500 g)', image: 'new-product-images/Veggies/Imgs/24-Mantra-Organic-Peanuts.webp' },
+    { name: 'A TATA Product - Organic India Bilona Cow Ghee', price: 928, originalPrice: 1031, quantity: '1 pc (500 ml)', image: 'new-product-images/Veggies/Imgs/A-TATA-Product-Organic-India-Bilona-Cow-Ghee.webp' },
+    { name: 'A TATA Product - Organic India Mustard Oil', price: 375, originalPrice: 450, quantity: '1 pc (1 L)', image: 'new-product-images/Veggies/Imgs/A-TATA-Product-Organic-India-Mustard-Oil-Certified-Organic-Lab-Tested-on-600-Parameters.webp' },
+    { name: 'Aashirvaad Organic Chana Dal', price: 120, originalPrice: 240, quantity: '1 pack (1 kg)', image: 'new-product-images/Veggies/Imgs/Aashirvaad-Organic-Chana-Dal-Rich-in-Protein.webp' },
+    { name: 'Aashirvaad Select 100% MP Sharbati Wheat Atta', price: 312, originalPrice: 406, quantity: '1 pack (5 kg)', image: 'new-product-images/Veggies/Imgs/Aashirvaad-Select-100-MP-Sharbati-Wheat-Atta-for-Soft-Makhmali-Rotis.webp' },
+    { name: 'Anveshan A2 Desi Cow Ghee', price: 685, originalPrice: 1045, quantity: '1 pc (500 ml)', image: 'new-product-images/Veggies/Imgs/Anveshan-A2-Desi-Cow-Ghee-Pure-Traditional.webp' },
+    { name: 'Daawat Thai Green Curry Meal Kit', price: 268, originalPrice: 275, quantity: '1 pack (401 g)', image: 'new-product-images/Veggies/Imgs/Daawat-Thai-Green-Curry-Meal-Kit-Ready-to-Cook-Meal.webp' },
+    { name: 'DeHaat HF Raw Peanuts', price: 259, originalPrice: 388, quantity: '1 pack (1 kg)', image: 'new-product-images/Veggies/Imgs/DeHaat-HF-Raw-Peanuts.webp' },
+    { name: 'Figaro Extra Virgin Olive Oil', price: 305, originalPrice: 599, quantity: '1 pc (250 ml)', image: 'new-product-images/Veggies/Imgs/Figaro-Extra-Virgin-Olive-Oil.webp' },
+    { name: 'Gemini Pure It Refined Sunflower Oil Jar', price: 869, originalPrice: 975, quantity: '1 pc (4.35 kg)', image: 'new-product-images/Veggies/Imgs/Gemini-Pure-It-Refined-Sunflower-Oil-Jar.webp' },
+    { name: 'India Gate 1 Cup Serves 5 Mini Mogra Basmati Rice', price: 314, originalPrice: 378, quantity: '1 pack (5 kg)', image: 'new-product-images/Veggies/Imgs/India-Gate-1-Cup-Serves-5-Mini-Mogra-Basmati-Rice-Aged-Rice-Smart-Choice.webp' },
+    { name: 'Jivika A2 Desi Buffalo Ghee', price: 439, originalPrice: 709, quantity: '1 pc (500 ml)', image: 'new-product-images/Veggies/Imgs/Jivika-A2-Desi-Buffalo-Ghee-Traditionally-Churned-Bilona-Method.webp' },
+    { name: 'Jiwa 30 Degree Gluten Free Flour', price: 170, originalPrice: 249, quantity: '1 pack (1 kg)', image: 'new-product-images/Veggies/Imgs/Jiwa-30-Degree-Gluten-Free-Flour.webp' },
+    { name: 'Naga Maida', price: 73, originalPrice: 92, quantity: '1 pack (1 kg)', image: 'new-product-images/Veggies/Imgs/Naga-Maida.webp' },
+    { name: 'Nirapara White Puttu Podi', price: 100, originalPrice: 125, quantity: '1 pack (1 kg)', image: 'new-product-images/Veggies/Imgs/Nirapara-White-Puttu-Podi.webp' },
+    { name: 'Pillsbury Chakki Fresh Atta', price: 58, originalPrice: 73, quantity: '1 pack (1 kg)', image: 'new-product-images/Veggies/Imgs/Pillsbury-Chakki-Fresh-Atta.webp' },
+  ],
+  'Dairy Products': [
+    { name: 'Abhi Eggs Gold+ Brown Eggs with Immunity Boosters', price: 84, originalPrice: 115, quantity: '1 pack (6 pcs)', image: 'new-product-images/Dairy Products/Imgs/Abhi-Eggs-Gold-Brown-Eggs-with-Immunity-Boosters.webp' },
+    { name: 'Akshayakalpa Organic Curd Pouch', price: 23, quantity: '1 pack (200 g)', image: 'new-product-images/Dairy Products/Imgs/Akshayakalpa-Organic-Curd-Pouch.webp' },
+    { name: 'Akshayakalpa Organic Unsalted Cooking Butter', price: 112, originalPrice: 114, quantity: '1 pack (100 g)', image: 'new-product-images/Dairy Products/Imgs/Akshayakalpa-Organic-Unsalted-Cooking-Butter.webp' },
+    { name: 'Amul A+ Process Cheese Slices', price: 115, originalPrice: 170, quantity: '1 pack (200 g)', image: 'new-product-images/Dairy Products/Imgs/Amul-A-Process-Cheese-Slices.webp' },
+    { name: 'Amul Processed Cheese Block', price: 270, originalPrice: 290, quantity: '1 pack (500 g)', image: 'new-product-images/Dairy Products/Imgs/Amul-Processed-Cheese-Block.webp' },
+    { name: 'Amul Salted Butter', price: 285, quantity: '1 pack (500 g)', image: 'new-product-images/Dairy Products/Imgs/Amul-Salted-Butter.webp' },
+    { name: 'Country Delight Buffalo Fresh Milk Pouch', price: 53, originalPrice: 59, quantity: '1 pack (450 ml)', image: 'new-product-images/Dairy Products/Imgs/Country-Delight-Buffalo-Fresh-Milk-Pouch.webp' },
+    { name: 'Godrej Jersey Fresh Paneer', price: 95, originalPrice: 120, quantity: '1 pack (200 g)', image: 'new-product-images/Dairy Products/Imgs/Godrej-Jersey-Fresh-Paneer.webp' },
+    { name: 'Hatsun Curd Pouch', price: 36, originalPrice: 37, quantity: '1 pack (500 g)', image: 'new-product-images/Dairy Products/Imgs/Hatsun-Curd-Pouch.webp' },
+    { name: 'Heritage Special Long Life Toned Milk Pouch', price: 31, originalPrice: 33, quantity: '1 pack (450 ml)', image: 'new-product-images/Dairy Products/Imgs/Heritage-Special-Long-Life-Toned-Milk-Pouch-.webp' },
+    { name: 'Heritage Table Butter', price: 270, originalPrice: 295, quantity: '1 pack (500 g)', image: 'new-product-images/Dairy Products/Imgs/Heritage-Table-Butter.webp' },
+    { name: 'Milky Mist Greek Yogurt', price: 39, originalPrice: 55, quantity: '1 pc (100 g)', image: 'new-product-images/Dairy Products/Imgs/Milky-Mist-Greek-Yogurt.webp' },
+    { name: 'Milky Mist Paneer', price: 228, originalPrice: 335, quantity: '1 pack (500 g)', image: 'new-product-images/Dairy Products/Imgs/Milky-Mist-Paneer.webp' },
+    { name: 'Milky Mist Processed Cheese Block', price: 117, originalPrice: 160, quantity: '1 pack (200 g)', image: 'new-product-images/Dairy Products/Imgs/Milky-Mist-Processed-Cheese-Block.webp' },
+    { name: 'Milky Mist Pure Cream', price: 76, originalPrice: 80, quantity: '1 pack (250 ml)', image: 'new-product-images/Dairy Products/Imgs/Milky-Mist-Pure-Cream.webp' },
+    { name: 'Mother Dairy Fresh Paneer', price: 92, quantity: '1 pack (200 g)', image: 'new-product-images/Dairy Products/Imgs/Mother-Dairy-Fresh-Paneer.webp' },
+  ],
+  Beverages: [
+    { name: 'Amul Kool Rose Milk Drink', price: 24, originalPrice: 25, quantity: '1 pc (180 ml)', image: 'new-product-images/Beverages/Imgs/Amul-Kool-Rose-Milk-Drink-Flavoured-Beverage.webp' },
+    { name: 'Appy Fizz Apple Soft Drink', price: 36, originalPrice: 40, quantity: '1 pc (600 ml)', image: 'new-product-images/Beverages/Imgs/Appy-Fizz-Apple-Soft-Drink-Pet-Fizzy-Refreshing.webp' },
+    { name: 'Coca-Cola Soft Drink Carbonated Beverage', price: 135, originalPrice: 160, quantity: '1 pack (8 x 250 ml)', image: 'new-product-images/Beverages/Imgs/Coca-Cola-Soft-Drink-Carbonated-Beverage.webp' },
+    { name: 'Fanta Grape Soft Drink Tin Can', price: 146, originalPrice: 199, quantity: '1 pc (320 ml)', image: 'new-product-images/Beverages/Imgs/Fanta-Grape-Soft-Drink-Tin-Can.webp' },
+    { name: 'Fanta Orange Flavoured Soft Drink', price: 35, originalPrice: 40, quantity: '1 pc (750 ml)', image: 'new-product-images/Beverages/Imgs/Fanta-Orange-Flavoured-Soft-Drink-Carbonated-Beverage.webp' },
+    { name: 'Fanta Pineapple And Grapefruit Soft Drink', price: 216, originalPrice: 220, quantity: '1 pc (320 ml)', image: 'new-product-images/Beverages/Imgs/Fanta-Pineapple-And-Grapefruit-Soft-Drink.webp' },
+    { name: 'Lemon Iced Tea', price: 129, originalPrice: 159, quantity: '420 ml', image: 'new-product-images/Beverages/Imgs/Lemon-Iced-Tea-.webp' },
+    { name: 'Mirinda Orange Flavoured Soft Drink', price: 34, originalPrice: 40, quantity: '1 pc (750 ml)', image: 'new-product-images/Beverages/Imgs/Mirinda-Orange-Flavoured-Soft-Drink-Fizzy-Refreshing.webp' },
+    { name: 'Moi Soi Popping Boba With Grapes Fruit Drink', price: 74, originalPrice: 150, quantity: '1 pc (330 ml)', image: 'new-product-images/Beverages/Imgs/Moi-Soi-Popping-Boba-With-Grapes-Fruit-Drink.webp' },
+    { name: 'Moi Soi Popping Boba With Peach Fruit Drink', price: 71, originalPrice: 150, quantity: '1 pc (330 ml)', image: 'new-product-images/Beverages/Imgs/Moi-Soi-Popping-Boba-With-Peach-Fruit-Drink.webp' },
+    { name: 'Mountain Dew Soft Drink PET', price: 20, quantity: '1 pc (400 ml)', image: 'new-product-images/Beverages/Imgs/Mountain-Dew-Soft-Drink-PET-Carbonated-Beverage.webp' },
+    { name: 'Paper Boat Aamras Drink', price: 39, quantity: '1 pc (200 ml)', image: 'new-product-images/Beverages/Imgs/Paper-Boat-Aamras-Drink-Ready-to-Drink-Beverage.webp' },
+    { name: 'Red Bull Energy Drink', price: 399, originalPrice: 480, quantity: '1 pack (4 x 250 ml)', image: 'new-product-images/Beverages/Imgs/Red-Bull-Energy-Drink-Ready-to-Drink-Beverage.webp' },
+    { name: 'Schweppes Ginger Ale', price: 57, originalPrice: 60, quantity: '1 pc (300 ml)', image: 'new-product-images/Beverages/Imgs/Schweppes-Ginger-Ale-Carbonated-Beverage.webp' },
+    { name: 'Sober Non-Alchoholic Pink Gin', price: 474, originalPrice: 499, quantity: '1 pc (180 ml)', image: 'new-product-images/Beverages/Imgs/Sober-Non-Alchoholic-Pink-Gin.webp' },
+    { name: 'Vietnamese Cold Coffee', price: 189, originalPrice: 229, quantity: '410 ml', image: 'new-product-images/Beverages/Imgs/Vietnamese-Cold-Coffee.webp' },
+  ],
+  'Personal Care & Beauty': [
+    { name: 'Biotique Fresh Neem Anti Dandruff Shampoo & Conditioner', price: 405, originalPrice: 799, quantity: '1 pc (650 ml)', image: 'new-product-images/Cosmetics/Imgs/Biotique-Fresh-Neem-Anti-Dandruff-Shampoo-Conditioner.webp' },
+    { name: 'Bodify Sandalwood And Neroli Handmade Soap', price: 37, originalPrice: 80, quantity: '1 pack (125 g)', image: 'new-product-images/Cosmetics/Imgs/Bodify-Sandalwood-And-Neroli-Handmade-Soap.webp' },
+    { name: 'Clinic Plus Strong & Thick Shampoo', price: 259, originalPrice: 365, quantity: '1 pc (355 ml)', image: 'new-product-images/Cosmetics/Imgs/Clinic-Plus-Strong-Thick-Shampoo-with-Rice-Water-Protein-Vitamin-E.webp' },
+    { name: 'Dabur Amla Hair Oil', price: 81, originalPrice: 92, quantity: '1 pc (180 ml)', image: 'new-product-images/Cosmetics/Imgs/Dabur-Amla-Hair-Oil-For-Strong-Long-Thick-Hair.webp' },
+    { name: 'Dove Hair Fall Rescue Shampoo', price: 160, originalPrice: 172, quantity: '1 pc (180 ml)', image: 'new-product-images/Cosmetics/Imgs/Dove-Hair-Fall-Rescue-Shampoo.webp' },
+    { name: 'Himalaya Neem & Turmeric Soap', price: 48, originalPrice: 60, quantity: '1 pc (125 g)', image: 'new-product-images/Cosmetics/Imgs/Himalaya-Neem-Turmeric-Soap.webp' },
+    { name: 'Indulekha Bringha Oil', price: 283, originalPrice: 477, quantity: '1 pc (100 ml)', image: 'new-product-images/Cosmetics/Imgs/Indulekha-Bringha-Oil-Reduces-Hair-Fall-And-Grows-New-Hair-100-Ayurvedic-Oil.webp' },
+    { name: "L'Oreal Paris Dream Lengths Conditioner", price: 204, originalPrice: 279, quantity: '1 pack (175 ml or 180 ml)', image: 'new-product-images/Cosmetics/Imgs/L-Oreal-Paris-Dream-Lengths-Conditioner.webp' },
+    { name: 'Lux International Creamy White Soap Bar', price: 36, originalPrice: 38, quantity: '1 pc (75 g or 80 g)', image: 'new-product-images/Cosmetics/Imgs/Lux-International-Creamy-White-Soap-Bar.webp' },
+    { name: 'Mamaearth Onion Hair Oil', price: 147, originalPrice: 177, quantity: '1 pc (50 ml)', image: 'new-product-images/Cosmetics/Imgs/Mamaearth-Onion-Hair-Oil.webp' },
+    { name: 'Medimix Classic Ayurvedic Soap with 18 Herbs', price: 42, originalPrice: 47, quantity: '1 pc (125 g)', image: 'new-product-images/Cosmetics/Imgs/Medimix-Classic-Ayurvedic-Traditionally-Made-Soap-with-18-Herbs.webp' },
+    { name: 'Pantene Hairfall Control Conditioner', price: 173, originalPrice: 245, quantity: '1 pc (200 ml)', image: 'new-product-images/Cosmetics/Imgs/Pantene-Hairfall-Control-Conditioner.webp' },
+    { name: 'Parachute Advansed Jasmine Hair Oil', price: 122, originalPrice: 144, quantity: '1 pc (300 ml)', image: 'new-product-images/Cosmetics/Imgs/Parachute-Advansed-Jasmine-Non-Sticky-Coconut-Hair-Oil.webp' },
+    { name: 'Santoor Skin Softening Bathing Soap', price: 170, originalPrice: 199, quantity: '1 pack (5 x 125 g)', image: 'new-product-images/Cosmetics/Imgs/Santoor-Skin-Softening-Sandal-and-Almond-Milk-Bathing-Soap-With-Anti-Aging-Properties.webp' },
+    { name: 'ThriveCo Hyapro 5-In-1 Hyaluronic Shampoo', price: 379, originalPrice: 449, quantity: '1 pc (236 ml)', image: 'new-product-images/Cosmetics/Imgs/ThriveCo-Hyapro-5-In-1-Hyaluronic-Shampoo-Repairs-Hydrates-Adds-Shine-Bounce.webp' },
+    { name: 'TRESemme Keratin Smooth Shampoo', price: 324, originalPrice: 435, quantity: '1 pc (340 ml)', image: 'new-product-images/Cosmetics/Imgs/TRESemme-Keratin-Smooth-Shampoo.webp' },
+  ],
+  'Cleaning Supplies': [
+    { name: 'Chakaachak Eazo Grass Broom New', price: 70, originalPrice: 115, quantity: '1 pack', image: 'new-product-images/Sanitary/Imgs/Chakaachak-Eazo-Grass-Broom-New.webp' },
+    { name: 'Chakaachak Eco Spin Bucket Mop', price: 649, originalPrice: 999, quantity: '1 pc', image: 'new-product-images/Sanitary/Imgs/Chakaachak-Eco-Spin-Bucket-Mop.webp' },
+    { name: 'Chakaachak Floor Cleaning Pocha', price: 50, originalPrice: 60, quantity: '1 pack', image: 'new-product-images/Sanitary/Imgs/Chakaachak-Floor-Cleaning-Pocha.webp' },
+    { name: 'Domex Ocean Fresh Toilet Cleaner', price: 145, originalPrice: 245, quantity: '1 pc (1 L)', image: 'new-product-images/Sanitary/Imgs/Domex-Ocean-Fresh-Toilet-Cleaner-Fights-Odour-for-Upto-3-Days.webp' },
+    { name: 'Ezee Medium Garbage Bags 19x21 Inch', price: 63, originalPrice: 72, quantity: '1 pack (30 pcs)', image: 'new-product-images/Sanitary/Imgs/Ezee-Medium-Garbage-Bags-19x-21-Inch.webp' },
+    { name: 'Gala Double Hockey Toilet Brush', price: 159, originalPrice: 180, quantity: '1 pc', image: 'new-product-images/Sanitary/Imgs/Gala-Double-Hockey-Toilet-Brush.webp' },
+    { name: 'Gala Long Handle Tile and Floor Scrubber', price: 180, originalPrice: 200, quantity: '1 pc', image: 'new-product-images/Sanitary/Imgs/Gala-Long-Handle-Tile-and-Floor-Scrubber.webp' },
+    { name: 'Gebi Antibacterial Delite Cloth Brush', price: 69, originalPrice: 99, quantity: '1 pc', image: 'new-product-images/Sanitary/Imgs/Gebi-Antibacterial-Delite-Cloth-Brush.webp' },
+    { name: 'Gebi Aqua Bucket Spin Mop with 1 Refill', price: 669, originalPrice: 1199, quantity: '1 pc', image: 'new-product-images/Sanitary/Imgs/Gebi-Aqua-Bucket-Spin-Mop-With-1-Microfiber-Refill-Colour-May-Vary-.webp' },
+    { name: 'Harpic Bathroom Ultra 10X Tough Stain Remover', price: 251, originalPrice: 299, quantity: '1 pc (1 L)', image: 'new-product-images/Sanitary/Imgs/Harpic-Bathroom-Ultra-10X-Tough-Stain-Remover-Citrus-1000ml.webp' },
+    { name: 'Lizol Bathroom Cleaner Liquid Pine', price: 250, originalPrice: 299, quantity: '1 pc (1 L)', image: 'new-product-images/Sanitary/Imgs/Lizol-Bathroom-Cleaner-Liquid-Pine.webp' },
+    { name: 'Perpetual Self-Adhesive Toothbrush Holder (4 Pcs)', price: 209, originalPrice: 1199, quantity: '1 pack (4 pcs)', image: 'new-product-images/Sanitary/Imgs/Perpetual-Self-Adhesive-Toothbrush-Holder-4-Pcs-Teddy-Bear-Shaped-for-Bathroom-Storage.webp' },
+    { name: 'Scotch Brite Bathroom Scrubber Brush', price: 155, originalPrice: 170, quantity: '1 pc', image: 'new-product-images/Sanitary/Imgs/Scotch-Brite-Bathroom-Scrubber-Brush-.webp' },
+    { name: 'Scotch-Brite Floor Cloth for Mopping', price: 61, originalPrice: 90, quantity: '1 pc', image: 'new-product-images/Sanitary/Imgs/Scotch-Brite-Floor-Cloth-Cotton-Cloth-for-Floor-Mopping.webp' },
+    { name: 'Soft Attire Multipurpose Microfiber Cloth', price: 89, originalPrice: 135, quantity: '2 pcs', image: 'new-product-images/Sanitary/Imgs/Soft-Attire-Multipurpose-Microfiber-Cloth-For-Cleaning-350-g-Assorted-Pack-.webp' },
+    { name: 'Soham Housewares Plastic Spray Bottle', price: 42, originalPrice: 139, quantity: '1 pc', image: 'new-product-images/Sanitary/Imgs/Soham-Housewares-Plastic-Spray-Bottle-500ml.webp' },
+  ],
+  MedPharm: [
+    { name: 'Durex Intense Condoms with Desirex Gel', price: 495, originalPrice: 550, quantity: '10 condoms', image: 'new-product-images/MedPharm/Imgs/dur0287_1.webp' },
+    { name: 'Durex Skin-on-Skin Real Feel Condoms', price: 419.3, originalPrice: 599, quantity: '10 condoms', image: 'new-product-images/MedPharm/Imgs/dur0318_1.webp' },
+    { name: 'Huggies Complete Comfort Wonder Baby Diaper Pants XL', price: 562, originalPrice: 1124, quantity: '46 diaper', image: 'new-product-images/MedPharm/Imgs/hug0242_1-jun25_1_.webp' },
+    { name: 'Kamasutra Strawberry Flavour Condoms', price: 30, quantity: '3 condoms', image: 'new-product-images/MedPharm/Imgs/KAM0237_1.webp' },
+    { name: 'Navratna Ayurvedic Cool Hair Oil', price: 194, originalPrice: 215.5, quantity: '300 ml oil', image: 'new-product-images/MedPharm/Imgs/NAV0006_1-AUG23_1.webp' },
+    { name: 'Neurobion Forte Tablet 30s', price: 43, quantity: '30 tablet', image: 'new-product-images/MedPharm/Imgs/neu0830_1-march25_1_.webp' },
+    { name: 'Ourdaily Vitamin E 400 mg Soft Gelatin Capsules', price: 42, quantity: '10 capsule', image: 'new-product-images/MedPharm/Imgs/OUR0005_1-AUG23_1.webp' },
+    { name: 'Ozomen Forte 100 Tablet 6s', price: 140.6, originalPrice: 187.5, quantity: '6 tablet', image: 'new-product-images/MedPharm/Imgs/OZO0026_1_1.webp' },
+    { name: 'Pampers Premium Care Diaper Pants XXL', price: 769.5, originalPrice: 1399, quantity: '30 diaper', image: 'new-product-images/MedPharm/Imgs/pam0295_1__1_1.webp' },
+    { name: "Paracip-650 Tablet 10's", price: 16.8, originalPrice: 21, quantity: '10 tablet', image: 'new-product-images/MedPharm/Imgs/PAR0014_1_1.webp' },
+    { name: 'New Saridon for Fast Headache Relief', price: 51.5, quantity: '10 tablet', image: 'new-product-images/MedPharm/Imgs/sar0001_1-sep2023_1_.webp' },
+    { name: 'Supradyn Daily Multivitamin Tablet 15s', price: 68, quantity: '15 tablet', image: 'new-product-images/MedPharm/Imgs/sup0009_1-july23_8_.webp' },
+    { name: 'Tiger Balm White Ointment', price: 87, quantity: '18 gm balm', image: 'new-product-images/MedPharm/Imgs/tig0006_1.webp' },
+    { name: 'Vicks VapoRub Steam Pods', price: 92.5, quantity: '4 capsule', image: 'new-product-images/MedPharm/Imgs/vic0502_1.webp' },
+    { name: "Vigore 50 Red Tablet 4's", price: 54.4, originalPrice: 72.5, quantity: '4 tablet', image: 'new-product-images/MedPharm/Imgs/VIG0006_1_3.webp' },
+    { name: 'Lifree Durable Absorb Adult Diaper Pants XL', price: 450, originalPrice: 562.5, quantity: '10 diaper', image: 'new-product-images/MedPharm/Imgs/xl_10_front_1.webp' },
+  ],
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  appendNewProducts()
   assignProductIds(document)
   captureOriginalProductOrder()
   bindLogoHome()
@@ -47,6 +159,93 @@ document.addEventListener('DOMContentLoaded', () => {
   bindCartButton()
   initializeAuthUI()
 })
+
+function appendNewProducts() {
+  Object.entries(NEW_PRODUCTS_BY_SECTION).forEach(([sectionTitle, products]) => {
+    const section = getOrCreateProductSection(sectionTitle)
+    if (!section) return
+
+    const grid = section.querySelector('.product-grid')
+    if (!grid) return
+
+    products.forEach((product) => {
+      const existing = grid.querySelector(`[data-source-image="${cssEscape(product.image)}"]`)
+      if (existing) return
+
+      const card = document.createElement('article')
+      card.className = 'product-card'
+      card.dataset.sourceImage = product.image
+      card.innerHTML = buildProductCardMarkup(product)
+      grid.appendChild(card)
+    })
+  })
+}
+
+function getOrCreateProductSection(sectionTitle) {
+  const sections = [...document.querySelectorAll('.product-section')]
+  const existingSection = sections.find((section) => section.querySelector('.section-title')?.textContent?.trim() === sectionTitle)
+  if (existingSection) return existingSection
+
+  if (sectionTitle !== 'MedPharm') {
+    return null
+  }
+
+  const mainElement = document.querySelector('main')
+  if (!mainElement) return null
+
+  const medPharmSection = document.createElement('section')
+  medPharmSection.className = 'product-section'
+  medPharmSection.innerHTML = `
+    <h2 class="section-title">MedPharm</h2>
+    <div class="product-grid"></div>
+  `
+
+  const promoSection = mainElement.querySelector('.promo-section')
+  if (promoSection) {
+    mainElement.insertBefore(medPharmSection, promoSection)
+  } else {
+    mainElement.appendChild(medPharmSection)
+  }
+
+  return medPharmSection
+}
+
+function buildProductCardMarkup(product) {
+  const currentPrice = formatPriceValue(product.price)
+  const hasOriginalPrice = Number(product.originalPrice || 0) > Number(product.price || 0)
+  const originalPriceMarkup = hasOriginalPrice
+    ? `<span class="original-price">₹${formatPriceValue(product.originalPrice)}</span>`
+    : ''
+  const discountMarkup = hasOriginalPrice
+    ? `<span class="discount-badge">₹${formatPriceValue(product.originalPrice - product.price)} OFF</span>`
+    : ''
+
+  return `
+    <div class="product-image-container">
+      <img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}" class="product-image">
+      <button class="add-button">ADD</button>
+    </div>
+    <div class="product-details">
+      <div class="price-row">
+        <span class="current-price">₹${currentPrice}</span>
+        ${originalPriceMarkup}
+      </div>
+      ${discountMarkup}
+      <h3 class="product-name">${escapeHtml(product.name)}</h3>
+      <p class="product-quantity">${escapeHtml(product.quantity || '1 pc')}</p>
+    </div>
+  `
+}
+
+function formatPriceValue(value) {
+  const numeric = Number(value || 0)
+  if (Number.isNaN(numeric)) return '0'
+  return Number.isInteger(numeric) ? String(numeric) : numeric.toFixed(2)
+}
+
+function cssEscape(value) {
+  return String(value || '').replace(/"/g, '\\"')
+}
 
 function bindLogoHome() {
   const logo = document.querySelector('.logo')

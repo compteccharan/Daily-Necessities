@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 import { supabase } from './supabaseClient.js'
 
 // ========================================
@@ -372,4 +370,3 @@ export async function saveUserProfile({ name, phone }) {
 export function getLoginUrl() {
   return buildAppUrl('source/Login.html')
 }
->>>>>>> Stashed changes

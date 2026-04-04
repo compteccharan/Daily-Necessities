@@ -25,7 +25,7 @@
 
         .cart-header h1 {
             font-size: 32px;
-            color: white;
+            color: #2c3e50;
             margin: 0;
         }
 
@@ -91,6 +91,7 @@
         .cart-item {
             display: flex;
             gap: 20px;
+            align-items: flex-start;
             padding: 20px;
             border: 1px solid #e0e0e0;
             border-radius: 5px;
@@ -167,18 +168,30 @@
         }
 
         .delete-btn {
-            background: #ff4444;
+            background: linear-gradient(135deg, #ff5f5f 0%, #e63946 100%);
             color: white;
             border: none;
-            padding: 8px 15px;
-            border-radius: 3px;
+            align-self: center;
+            min-width: 84px;
+            padding: 10px 14px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 14px;
-            transition: 0.3s;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+            box-shadow: 0 4px 10px rgba(230, 57, 70, 0.25);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
         }
 
         .delete-btn:hover {
-            background: #cc0000;
+            background: linear-gradient(135deg, #ff4a4a 0%, #cf2f3c 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 14px rgba(207, 47, 60, 0.32);
+        }
+
+        .delete-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 8px rgba(207, 47, 60, 0.24);
         }
 
         .cart-summary {

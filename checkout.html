@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,6 +61,27 @@
             margin-bottom: 5px;
             color: #333;
             font-weight: 500;
+        }
+
+        .terms-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 6px;
+        }
+
+        .terms-group input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+            accent-color: #27ae60;
+        }
+
+        .terms-group label {
+            display: inline;
+            margin: 0;
+            line-height: 1.45;
         }
 
         .form-group input,
@@ -326,10 +345,10 @@
                 <!-- Terms & Conditions -->
                 <div class="form-section">
                     <div class="form-group">
-                        <input type="checkbox" id="terms" required>
-                        <label for="terms" style="display: inline; margin-left: 5px;">
-                            I agree to the Terms & Conditions and Privacy Policy
-                        </label>
+                        <div class="terms-group">
+                            <input type="checkbox" id="terms" required>
+                            <label for="terms">I agree to the Terms & Conditions and Privacy Policy</label>
+                        </div>
                     </div>
                 </div>
             </form>
@@ -374,4 +393,3 @@
     <script type="module" src="./source/checkoutPage.js"></script>
 </body>
 </html>
->>>>>>> Stashed changes

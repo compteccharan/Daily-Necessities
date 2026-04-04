@@ -1,8 +1,10 @@
 import { getCurrentUser, getLoginUrl, restoreSession } from './auth.js'
 import { calculateCartTotals, getCart, removeFromCart, updateCartQuantity } from './userManager.js'
 import { escapeHtml, formatCurrency, imageSrc } from './pageHelpers.js'
+import { supabase } from './supabaseClient.js'
 
 let cartItems = []
+let realtimeChannel = null
 
 document.addEventListener('DOMContentLoaded', initCartPage)
 
@@ -16,10 +18,39 @@ async function initCartPage() {
     }
 
     await refreshCart()
+    subscribeToCartRealtime(user.id)
     document.getElementById('cart-items-list')?.addEventListener('click', handleCartClick)
   } catch (error) {
     alert(error.message || 'Unable to load cart')
   }
+}
+
+function subscribeToCartRealtime(userId) {
+  realtimeChannel?.unsubscribe()
+
+  realtimeChannel = supabase
+    .channel(`cart-live-${userId}`)
+    .on(
+      'postgres_changes',
+      {
+        event: '*',
+        schema: 'public',
+        table: 'carts',
+        filter: `user_id=eq.${userId}`,
+      },
+      () => {
+        void refreshCart()
+      }
+    )
+    .subscribe()
+
+  window.addEventListener(
+    'beforeunload',
+    () => {
+      realtimeChannel?.unsubscribe()
+    },
+    { once: true }
+  )
 }
 
 async function refreshCart() {
@@ -79,13 +110,26 @@ async function handleCartClick(event) {
   const item = cartItems.find((entry) => entry.id === cartId)
   if (!item) return
 
+  const previousCart = [...cartItems]
+
   try {
     if (target.classList.contains('increase-btn')) {
+      cartItems = cartItems.map((entry) =>
+        entry.id === cartId ? { ...entry, quantity: Number(entry.quantity) + 1 } : entry
+      )
+      renderCart()
       await updateCartQuantity(cartId, Number(item.quantity) + 1)
     } else if (target.classList.contains('decrease-btn')) {
-      await updateCartQuantity(cartId, Math.max(1, Number(item.quantity) - 1))
+      const nextQuantity = Math.max(1, Number(item.quantity) - 1)
+      cartItems = cartItems.map((entry) =>
+        entry.id === cartId ? { ...entry, quantity: nextQuantity } : entry
+      )
+      renderCart()
+      await updateCartQuantity(cartId, nextQuantity)
     } else if (target.classList.contains('delete-btn')) {
       if (!window.confirm('Are you sure you want to delete this item?')) return
+      cartItems = cartItems.filter((entry) => entry.id !== cartId)
+      renderCart()
       await removeFromCart(cartId)
     } else {
       return
@@ -93,6 +137,8 @@ async function handleCartClick(event) {
 
     await refreshCart()
   } catch (error) {
+    cartItems = previousCart
+    renderCart()
     alert(error.message || 'Unable to update cart')
   }
 }

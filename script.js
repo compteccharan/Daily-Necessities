@@ -88,56 +88,7 @@ setInterval(function() {
 
 
 // ============================================
-<<<<<<< Updated upstream
-// 4. CART POPUP - Shows when ADD button clicked
-// ============================================
-
-window.addEventListener('load', function() {
-    
-    // Find all ADD buttons
-    var addButtons = document.querySelectorAll('.add-button');
-    
-    // Find the popup
-    var popup = document.getElementById('cart-popup');
-    
-    // Find the close button
-    var closeBtn = document.querySelector('.close-popup');
-    
-    // When any ADD button is clicked, show popup
-    for (var i = 0; i < addButtons.length; i++) {
-        addButtons[i].addEventListener('click', function() {
-            popup.classList.remove('hidden');
-        });
-    }
-    
-    // When cart button is clicked, show popup
-    var cartButton = document.querySelector('.cart-button');
-    if (cartButton) {
-        cartButton.addEventListener('click', function() {
-            popup.classList.remove('hidden');
-        });
-    }
-    
-    // When close button clicked, hide popup
-    closeBtn.addEventListener('click', function() {
-        popup.classList.add('hidden');
-    });
-    
-    // When clicking outside popup content, close it
-    popup.addEventListener('click', function(event) {
-        if (event.target === popup) {
-            popup.classList.add('hidden');
-        }
-    });
-    
-});
-
-
-// ============================================
-// 5. STICKY HEADER - Hide when testimonials visible
-=======
 // 4. STICKY HEADER - Hide when testimonials visible
->>>>>>> Stashed changes
 // ============================================
 
 window.addEventListener('load', function() {
