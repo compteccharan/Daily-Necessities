@@ -11,6 +11,9 @@ permissions:
   pages: write
   id-token: write
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 concurrency:
   group: pages
   cancel-in-progress: true
@@ -30,10 +33,14 @@ jobs:
         run: |
           mkdir -p dist
           if [ -d docs ]; then
-            cp -r docs/* dist/
+            cp -a docs/. dist/
           else
-            shopt -s extglob
-            cp -r !(dist|.git|.github|node_modules) dist/ || true
+            rsync -a \
+              --exclude 'dist' \
+              --exclude '.git' \
+              --exclude '.github' \
+              --exclude 'node_modules' \
+              ./ dist/
           fi
 
       - name: Upload GitHub Pages artifact
