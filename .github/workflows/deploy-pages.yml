@@ -3,8 +3,7 @@ name: Deploy Daily Necessities to GitHub Pages
 on:
   push:
     branches:
-      - main
-      - master
+      - head
   workflow_dispatch:
 
 permissions:

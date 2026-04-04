@@ -57,13 +57,12 @@ This repository now includes a workflow file at `.github/workflows/deploy-pages.
 	- Under **Build and deployment**, choose:
 	  - **Source**: `GitHub Actions`
 
-4. **Check your default branch**
+4. **Check your deployment branch**
 	- The workflow currently deploys when you push to:
-	  - `main`, `master`, or `charan-sathya`
-	- If your active branch is different, add it in `.github/workflows/deploy-pages.yml` under `on.push.branches`.
-	 - The workflow currently deploys when you push to:
-		 - `main` or `master`
-	 - If your active branch is different, either merge into `main`/`master` or allow that branch in **Settings → Environments → github-pages**.
+	  - `head`
+	- If you rename branches later, update `.github/workflows/deploy-pages.yml` under `on.push.branches`.
+	- If branch protection is enabled for Pages environment, allow the same branch in:
+	  - **Settings → Environments → github-pages → Deployment branches**
 
 5. **Trigger deployment**
 	- Push a commit to one of those branches **or**
