@@ -1,4 +1,5 @@
 import { supabase } from './supabaseClient.js'
+import { CONFIG } from './config.js'
 
 // ========================================
 // VALIDATION FUNCTIONS
@@ -153,6 +154,14 @@ export async function signIn(email, password) {
 // ========================================
 
 function getRedirectUrl() {
+  const host = window.location.hostname
+  const isLocalHost = host === 'localhost' || host === '127.0.0.1'
+  const configuredAppUrl = String(CONFIG.APP_URL || '').trim()
+
+  if (isLocalHost && configuredAppUrl) {
+    return configuredAppUrl.endsWith('/') ? configuredAppUrl : `${configuredAppUrl}/`
+  }
+
   return buildAppUrl('index.html')
 }
 
@@ -255,7 +264,7 @@ export async function ensureUserProfile(user) {
 
 export async function logout() {
   try {
-    const { error } = await supabase.auth.signOut()
+    const { error } = await supabase.auth.signOut({ scope: 'global' })
     if (error) throw new Error(error.message)
 
     resetSessionRestore()

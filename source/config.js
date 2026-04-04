@@ -7,6 +7,7 @@
 export const CONFIG = {
   SUPABASE_URL: 'https://jacxdeovekyipofwiqhb.supabase.co',
   SUPABASE_ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImphY3hkZW92ZWt5aXBvZndpcWhiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUxMzcyOTIsImV4cCI6MjA5MDcxMzI5Mn0.4h2vSQ9mXlxklGms2UoqzRavRCjr1W4swihy09P087w',
+  APP_URL: 'https://compteccharan.github.io/Daily-Necessities/',
 }
 
 // ========================================
