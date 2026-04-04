@@ -152,6 +152,17 @@ const NEW_PRODUCTS_BY_SECTION = {
   ],
 }
 
+const REPO_BASE_PATH = '/Daily-Necessities/'
+
+Object.values(NEW_PRODUCTS_BY_SECTION).forEach((products) => {
+  products.forEach((product) => {
+    const imagePath = String(product?.image || '')
+    if (!imagePath || imagePath.startsWith('/')) return
+
+    product.image = `${REPO_BASE_PATH}${imagePath.replace(/^\/+/, '')}`
+  })
+})
+
 document.addEventListener('DOMContentLoaded', () => {
   appendNewProducts()
   assignProductIds(document)
