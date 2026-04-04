@@ -1,0 +1,64 @@
+=== Session Log: Daily-Necessities Bug Fixes ===
+Date: 2026-04-03
+
+ISSUES TO FIX:
+1. Cart quantity +/- buttons not working
+2. Cart delete item not working
+3. Cart product images not showing
+4. No receipt page after checkout
+5. Search not implemented
+6. Category filtering not implemented
+7. Auth session pseudo logged-in state
+
+FIXES APPLIED:
+
+[1] cart.html - Cart Buttons Fixed
+- Replaced inline onclick handlers with event delegation
+- Added proper event listeners for increase/decrease/delete buttons
+- Uses data-cart-id attributes instead of onclick="function(id)"
+
+[2] cart.html - Product Images Fixed
+- Converts product_name to image filename (spaces -> hyphens + .webp)
+- Shows actual product image from product-images folder
+- Falls back to placeholder if image not found
+
+[3] order-confirmation.html - Created Receipt Page
+- Shows order ID, estimated delivery date
+- Lists all ordered items with images
+- Displays payment summary (subtotal, tax, total)
+- Shows delivery address
+- Print receipt button
+
+[4] checkout.html - Updated Redirect
+- Stores order data in sessionStorage before redirect
+- Redirects to order-confirmation.html instead of index.html
+
+[5] index.html - Search Functionality Added
+- Real-time filtering as user types
+- Searches product names across all sections
+- Shows "no results" message when nothing found
+- Escape key clears search
+
+[6] index.html - Category Filtering Added
+- Nav items now filter products by category
+- Maps nav labels to product sections
+- Combined with search for better UX
+
+[7] auth.js + index.html - Auth Session Improved
+- getCurrentUser now checks getSession() first
+- Added handleOAuthCallback() for OAuth redirects
+- Cleans URL after OAuth callback
+- Better session detection on page load
+
+FILES MODIFIED:
+- cart.html
+- checkout.html
+- index.html
+- source/auth.js
+
+FILES CREATED:
+- order-confirmation.html
+
+NOTE: User may still need to run FIX_RLS_POLICY.sql in Supabase SQL Editor
+if database tables/policies aren't set up correctly.
+

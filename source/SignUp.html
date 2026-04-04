@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" style="margin:0px 0px;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Verdail - Your Farm-Fresh Daily Essentials">
+    <title>Verdail - Sign Up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="styles/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="background"></div>
+    <div class="page-layout">
+        <div class="brand-panel">
+            <img class="brand-image" src="../assets/VERDAIL_ENTRY.png" alt="Verdail Online Shop">
+        </div>
+        <div class="sign-in-wrapper">
+            <h1 class="sign-in-heading">Sign Up</h1>
+            <div class="sign-in-form-container">
+                <form class="sign-in-form" id="signup-form">
+                    <input type="text" id="signup-name" placeholder="Full Name" required>
+                    <input type="email" id="signup-email" placeholder="Email" required>
+                    <input type="tel" id="signup-phone" placeholder="Phone Number" required>
+                    <input type="password" id="signup-password" placeholder="Password (min 8 chars)" required>
+                    <input type="password" id="signup-confirm-password" placeholder="Confirm Password" required>
+                    <button class="signin-button" type="submit"><p style="margin:0px;margin-left:-9px;">Sign Up</p></button>
+                    <div id="error-message" style="color: red; margin-top: 10px; display: none;"></div>
+                    <div id="success-message" style="color: green; margin-top: 10px; display: none;"></div>
+                </form>
+
+                <div class="sign-in-portion">
+                  <h5 class="connect_media">or Connect with other social media</h5>
+                    <button type="button" class="google_button" id="google-signup-btn">
+                        <p class="google_button-text">Sign up with Google</p>
+                        <img class="google_img" src="../assets/google icon.svg">
+                    </button>
+                    <span style="margin-left:16px;line-height:32px;">
+                        <p class="new-customer">Already have account? <a href="Login.html" class="sign-up" style="text-decoration: none; color: inherit;">Sign In</a></p>
+                        <pre class="terms-conditions" style="line-height:18px;">By continuing, you agree to Verdail's <br> <u class="conditions">Conditions of Use</u> and <u class="policy">Privacy Policy</u></pre>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { supabase } from './supabaseClient.js';
+        import { getCurrentUser, restoreSession, signUp, signUpWithGoogle, validateEmail, validatePassword } from './auth.js';
+
+        const form = document.getElementById('signup-form');
+        const errorDiv = document.getElementById('error-message');
+        const successDiv = document.getElementById('success-message');
+        const googleBtn = document.getElementById('google-signup-btn');
+
+        (async () => {
+            await restoreSession();
+            const existingUser = await getCurrentUser();
+            if (existingUser) {
+                window.location.href = '../index.html';
+            }
+        })();
+
+        // Handle form submission
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            errorDiv.style.display = 'none';
+            successDiv.style.display = 'none';
+
+            const name = document.getElementById('signup-name').value.trim();
+            const email = document.getElementById('signup-email').value.trim();
+            const phone = document.getElementById('signup-phone').value.trim();
+            const password = document.getElementById('signup-password').value;
+            const confirmPassword = document.getElementById('signup-confirm-password').value;
+
+            // Validation
+            if (!name) {
+                showError('Please enter your name');
+                return;
+            }
+            if (!validateEmail(email)) {
+                showError('Please enter a valid email');
+                return;
+            }
+            if (!phone) {
+                showError('Please enter your phone number');
+                return;
+            }
+            if (!validatePassword(password)) {
+                showError('Password must be at least 8 characters with uppercase, lowercase, and numbers');
+                return;
+            }
+            if (password !== confirmPassword) {
+                showError('Passwords do not match');
+                return;
+            }
+
+            try {
+                await signUp(email, password, name, phone);
+                showSuccess('Account created! Redirecting to login...');
+                setTimeout(() => {
+                    window.location.href = 'Login.html';
+                }, 2000);
+            } catch (error) {
+                showError(error.message);
+            }
+        });
+
+        // Handle Google Sign Up
+        googleBtn.addEventListener('click', async () => {
+            try {
+                await signUpWithGoogle();
+                // Supabase will redirect to callback URL
+            } catch (error) {
+                showError('Google sign-up failed: ' + error.message);
+            }
+        });
+
+        function showError(msg) {
+            errorDiv.textContent = msg;
+            errorDiv.style.display = 'block';
+        }
+
+        function showSuccess(msg) {
+            successDiv.textContent = msg;
+            successDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

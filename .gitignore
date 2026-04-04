@@ -1,0 +1,12 @@
+# GitHub Copilot workspace customizations (kept in user profile instead)
+.github/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.vscode/
+.idea/
+product-example.html
+product-example.css
